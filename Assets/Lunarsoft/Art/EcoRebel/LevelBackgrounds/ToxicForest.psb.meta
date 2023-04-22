@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 876540addd8f3412ea2041dc4fdc3367
+guid: 6c09566a55ed24d50b9e03b27d62d969
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,7 +93,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Layer 2
+  - name: Layer 3 copy 5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -104,7 +104,7 @@ ScriptedImporter:
       y: 4
       width: 1456
       height: 832
-    spriteID: 363e93653ef804808ad1cef3926d00fc
+    spriteID: 4b3b73af065744104a0e0aaa7e10fa38
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -115,7 +115,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 0, y: 0}
-  - name: Layer 1
+  - name: Layer 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -126,7 +126,7 @@ ScriptedImporter:
       y: 844
       width: 1456
       height: 832
-    spriteID: 52ceb3877c741473da5a3daef13aab2e
+    spriteID: e3c979d776ac744c79841ea94bb2f8f4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -136,6 +136,28 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 844}
+    spritePosition: {x: 0, y: 0}
+  - name: Layer 1 copy 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1684
+      width: 1456
+      height: 832
+    spriteID: 7a1cadca048214d0884c995966ea8742
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 1684}
     spritePosition: {x: 0, y: 0}
   characterData:
     bones: []
@@ -167,26 +189,56 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: Layer 2
-    spriteName: Layer 2
+  - name: Layer 3 copy 5
+    spriteName: Layer 3 copy 5
     isGroup: 0
     parentIndex: -1
-    spriteID: 363e93653ef804808ad1cef3926d00fc
-    layerID: 4
+    spriteID: 4b3b73af065744104a0e0aaa7e10fa38
+    layerID: 14
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 1
-    spriteName: Layer 1
+  - name: Layer 2
+    spriteName: Layer 2
     isGroup: 0
     parentIndex: -1
-    spriteID: 52ceb3877c741473da5a3daef13aab2e
-    layerID: 2
+    spriteID: e3c979d776ac744c79841ea94bb2f8f4
+    layerID: 4
     mosaicPosition: {x: 4, y: 844}
     flatten: 0
     isImported: 1
     isVisible: 1
+  - name: Layer 3
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fb9c14579274d4f98ad945a0ab4b3a91
+    layerID: 11
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Layer 1 copy 3
+    spriteName: Layer 1 copy 3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7a1cadca048214d0884c995966ea8742
+    layerID: 12
+    mosaicPosition: {x: 4, y: 1684}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 57f62c136d0ba45b28913e62e217ab8f
+    layerID: 2
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   generateGOHierarchy: 0
