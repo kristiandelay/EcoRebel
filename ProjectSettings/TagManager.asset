@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - SpawnPoint
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -55,6 +56,9 @@ TagManager:
   - name: GameLayer
     uniqueID: 1603050307
     locked: 0
+  - name: EffectsForeground
+    uniqueID: 2346418345
+    locked: 0
   - name: Foreground1
     uniqueID: 1745531537
     locked: 0
@@ -63,7 +67,4 @@ TagManager:
     locked: 0
   - name: Foreground3
     uniqueID: 3312382467
-    locked: 0
-  - name: EffectsForeground
-    uniqueID: 2346418345
     locked: 0
