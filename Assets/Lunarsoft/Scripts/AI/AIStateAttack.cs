@@ -7,9 +7,11 @@ namespace Lunarsoft
     public class AIStateAttack : AIStateBase
     {
         FollowTarget followTarget;
+        LightAttackAction action;
 
         protected override void OnEnterState()
         {
+            action = GetComponent<LightAttackAction>();
             followTarget = GetComponent<FollowTarget>();
             if (followTarget)
             {
@@ -28,6 +30,11 @@ namespace Lunarsoft
             if (followTarget.target != null && followTarget.distanceFromTarget > agent.stoppingDistance)
             {
                 controller.SetState<AIStatePatrol>();
+            }
+
+            if(action.isAttacking == false)
+            {
+                action.triggerAttack = true;
             }
             Debug.Log($"AIStateAttack followTarget.distanceFromTarget: {followTarget.distanceFromTarget}");
 

@@ -8,7 +8,7 @@ namespace Lunarsoft
         [SerializeField] private float attackRange = 1f;
         [SerializeField] private LayerMask enemyLayer;
         [SerializeField] private Transform attackPoint;
-        [SerializeField] private float attackCooldown = 1f;
+        [SerializeField] public float attackCooldown = 1f;
         [SerializeField] private GameObject hitEffectPrefab;
 
         [SerializeField] private AudioClip[] attackSounds;
@@ -17,7 +17,9 @@ namespace Lunarsoft
 
 
         public bool isAI = false;
-        private float currentAttackCooldown = 0f;
+        public bool triggerAttack = false;
+
+        public float currentAttackCooldown = 0f;
         public bool isAttacking { get; private set; }
         public bool enableHitbox { get; private set; }
 
@@ -67,6 +69,13 @@ namespace Lunarsoft
                     PerformAttack();
                     currentAttackCooldown = calculatedCooldown;
                 }
+            } else
+            {
+                if (currentAttackCooldown <= 0 && triggerAttack)
+                {
+                    PerformAttack();
+                    currentAttackCooldown = calculatedCooldown;
+                }
             }
         }
 
@@ -89,8 +98,8 @@ namespace Lunarsoft
                     continue; // Enemy has already been hit during this attack
                 }
 
-                BaseController controller = enemy.GetComponent<BaseController>();
-                if (controller != null)
+                BaseController baseController = enemy.GetComponent<BaseController>();
+                if (baseController != null)
                 {
                     float damage = controller.characterStats.AttackDamage.GetValueAtLevel(controller.characterStats.level);
 
@@ -100,27 +109,27 @@ namespace Lunarsoft
                         hitEffectInstance.transform.localScale *= Mathf.Sign(controller.transform.localScale.x);
                     }
 
-                    bool playerOnLeftSide = (controller.root.transform.position.x - controller.transform.position.x) > 0;
+                    bool playerOnLeftSide = (baseController.root.transform.position.x - controller.transform.position.x) > 0;
 
                     string animationHit = "Hit";
                     if (playerOnLeftSide)
                     {
-                        if(controller.facingRight == true)
+                        if(baseController.facingRight == true)
                         {
                             animationHit = "HitBack";
                         }
                     }
                     else
                     {
-                        if (controller.facingRight == false)
+                        if (baseController.facingRight == false)
                         {
                             animationHit = "HitBack";
                         }
                     }
 
-                    Debug.DrawLine(controller.transform.position, controller.root.transform.position, Color.yellow, 2f);
+                    Debug.DrawLine(controller.transform.position, baseController.root.transform.position, Color.yellow, 2f);
                     PlayRandomAttackImpactSound();
-                    controller.TakeDamage(damage, animationHit);
+                    baseController.TakeDamage(damage, animationHit);
                     hitEnemies.Add(enemy);
                 }
             }
@@ -159,6 +168,7 @@ namespace Lunarsoft
         public void FinishedAttack()
         {
             isAttacking = false;
+            triggerAttack = false;
         }
 
         private void OnDrawGizmosSelected()
