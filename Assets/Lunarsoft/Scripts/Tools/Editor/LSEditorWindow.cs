@@ -17,6 +17,34 @@ namespace Lunarsoft.Tools
 
         protected GUIStyle titleStyle, subtitleStyle, wrapperStyle;
 
+        [System.Serializable]
+        public struct SharedCharacterData
+        {
+            // Character Objects
+            [SerializeField] public int selectedLayer;
+            [SerializeField] public GameObject camera;
+            [SerializeField] public GameObject character;
+
+            [SerializeField] public GameObject shadowPrefab;
+            [SerializeField] public GameObject footStepVFXPrefab;
+
+            [SerializeField] public Transform leftHand;
+            [SerializeField] public Transform rightHand;
+            [SerializeField] public Transform leftFoot;
+            [SerializeField] public Transform rightFoot;
+
+            [SerializeField] public CharacterStats characterStats;
+
+            // Camera 
+            [SerializeField] public string camera_tag;
+            // TODO: Virtual Camera
+
+            // Animations
+            [SerializeField] public Animator character_animator;
+            [SerializeField] public bool override_animation;
+        }
+
+
         #endregion
 
         protected GameObject CreateObjectAtTransform(GameObject gameobject, string transform_key)

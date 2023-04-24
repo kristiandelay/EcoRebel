@@ -5,41 +5,19 @@ using Lunarsoft;
 using System;
 using System.Reflection;
 using UnityEngine.U2D.IK;
+using PixelCrushers;
+using PixelCrushers.DialogueSystem;
+using PolyNav;
 
 namespace Lunarsoft.Tools
 {
-    public class LSCharacterGeneratorWindow : LSEditorWindow
+    public class LSAICharacterGeneratorWindow : LSEditorWindow
     {
         #region Variables
 
         SharedCharacterData characterData;
 
-        static protected LSCharacterGeneratorWindow window;
-
-        #endregion
-
-        #region Setup Camera
-
-        public virtual void SetupCameraDefaults(Camera camera)
-        {
-            if (camera == false)
-            {
-                return;
-            }
-            AlertProgress("Setting Default Camera values");
-
-
-            AlertProgress("Setting Default Camera values complete");
-        }
-
-        public virtual bool SetupCamera()
-        {
-            bool continute_setup = true;
-            AlertProgress("Checking Camera Dependencies");
-
-            AlertProgress("ThirdPersonCamera Setup complete");
-            return continute_setup;
-        }
+        static protected LSAICharacterGeneratorWindow window;
 
         #endregion
 
@@ -267,50 +245,50 @@ namespace Lunarsoft.Tools
             return rootTransform;
         }
 
-        public virtual void SetupPlayerController(PlayerController playerController)
+        public virtual void SetupAIPlayerController(AIController aiController)
         {
-            if (playerController == false)
+            if (aiController == false)
             {
                 return;
             }
 
-            AlertProgress("Setting Default playerController values");
+            AlertProgress("Setting Default aiController values");
 
             Transform rootTransform = CreateGameObject("Root");
-            playerController.root = rootTransform.transform;
+            aiController.root = rootTransform.transform;
 
             Transform mountSpawnTransform = CreateGameObject("MountSpawnTransform");
-            playerController.mountSpawnTransform = mountSpawnTransform.transform;
+            aiController.mountSpawnTransform = mountSpawnTransform.transform;
 
             Transform mountTransform = CreateGameObject("MountTransform");
-            playerController.mountTransform = mountTransform.transform;
+            aiController.mountTransform = mountTransform.transform;
 
             BoxCollider2D boxcollider = characterData.character.GetComponent<BoxCollider2D>();
-            playerController.playerCollider = boxcollider;
-            playerController.isMounted = false;
-            playerController.characterStats = characterData.characterStats;
+            aiController.playerCollider = boxcollider;
+            aiController.isMounted = false;
+            aiController.characterStats = characterData.characterStats;
 
-            AlertProgress("Setting Default playerController values complete");
+            AlertProgress("Setting Default aiController values complete");
         }
 
-        public virtual bool SetupPlayerController()
+        public virtual bool SetupAIPlayerController()
         {
             bool continute_setup = true;
-            AlertProgress("Checking PlayerController Dependencies");
-            PlayerController playerController = characterData.character.GetComponent<PlayerController>();
+            AlertProgress("Checking aiController Dependencies");
+            AIController aiController = characterData.character.GetComponent<AIController>();
 
-            if (playerController)
+            if (aiController)
             {
-                AlertProgress("Character PlayerController Found");
+                AlertProgress("Character aiController Found");
             }
             else
             {
-                AlertProgress(" PlayerController not found");
-                AlertProgress("Creating PlayerController");
-                playerController = characterData.character.AddComponent<PlayerController>();
+                AlertProgress(" aiController not found");
+                AlertProgress("Creating aiController");
+                aiController = characterData.character.AddComponent<AIController>();
             }
 
-            SetupPlayerController(playerController);
+            SetupAIPlayerController(aiController);
 
             AlertProgress("BoxCollider2D Setup complete");
 
@@ -555,8 +533,195 @@ namespace Lunarsoft.Tools
                 footStepParticles.rightFoot = characterData.rightFoot;
                 footStepParticles.footstepVFX = characterData.footStepVFXPrefab;
 
-                AlertProgress("Finished Creating MagicAction");
+                AlertProgress("Finished Creating FootStepParticles");
             }
+            return true;
+        }
+
+        private bool SetupDialogue()
+        {
+
+            PositionSaver positionSaver = characterData.character.GetComponent<PositionSaver>();
+            if (positionSaver)
+            {
+                AlertProgress("Character PositionSaver Found");
+            }
+            else
+            {
+                AlertProgress("PositionSaver not found");
+                AlertProgress("Creating PositionSaver");
+
+                positionSaver = characterData.character.AddComponent<PositionSaver>();
+
+                AlertProgress("Finished Creating PositionSaver");
+            }
+
+            ShowCursorOnConversation showCursorOnConversation = characterData.character.GetComponent<ShowCursorOnConversation>();
+            if (showCursorOnConversation)
+            {
+                AlertProgress("Character ShowCursorOnConversation Found");
+            }
+            else
+            {
+                AlertProgress("ShowCursorOnConversation not found");
+                AlertProgress("Creating ShowCursorOnConversation");
+
+                showCursorOnConversation = characterData.character.AddComponent<ShowCursorOnConversation>();
+
+                AlertProgress("Finished Creating ShowCursorOnConversation");
+            }
+
+
+            DialogueSystemEvents dialogueSystemEvents = characterData.character.GetComponent<DialogueSystemEvents>();
+            if (dialogueSystemEvents)
+            {
+                AlertProgress("Character DialogueSystemEvents Found");
+            }
+            else
+            {
+                AlertProgress("DialogueSystemEvents not found");
+                AlertProgress("Creating DialogueSystemEvents");
+
+                dialogueSystemEvents = characterData.character.AddComponent<DialogueSystemEvents>();
+
+                AlertProgress("Finished Creating DialogueSystemEvents");
+            }
+
+
+            return true;
+        }
+
+        private bool SetupPolyNavAgent()
+        {
+
+            PolyNavAgent polyNavAgent = characterData.character.GetComponent<PolyNavAgent>();
+            if (polyNavAgent)
+            {
+                AlertProgress("Character PolyNavAgent Found");
+            }
+            else
+            {
+                AlertProgress("PolyNavAgent not found");
+                AlertProgress("Creating PolyNavAgent");
+
+                polyNavAgent = characterData.character.AddComponent<PolyNavAgent>();
+                polyNavAgent.maxSpeed = 60;
+                polyNavAgent.maxForce = 10;
+                polyNavAgent.stoppingDistance = 20;
+                polyNavAgent.slowingDistance = 0;
+                polyNavAgent.lookAheadDistance = 10;
+
+                polyNavAgent.avoidRadius = 10;
+                polyNavAgent.avoidanceConsiderStuckedTime = 3;
+                polyNavAgent.avoidanceConsiderReachedDistance = 1;
+
+                polyNavAgent.rotateTransform = false;
+                polyNavAgent.repath = true;
+                polyNavAgent.restrict = true;
+                polyNavAgent.closerPointOnInvalid = true;
+                polyNavAgent.debugPath = true;
+
+                AlertProgress("Finished Creating PolyNavAgent");
+            }
+
+            PatrolRandomWaypoints patrolRandomWaypoints = characterData.character.GetComponent<PatrolRandomWaypoints>();
+            if (patrolRandomWaypoints)
+            {
+                AlertProgress("Character PatrolRandomWaypoints Found");
+            }
+            else
+            {
+                AlertProgress("PatrolRandomWaypoints not found");
+                AlertProgress("Creating PatrolRandomWaypoints");
+
+                patrolRandomWaypoints = characterData.character.AddComponent<PatrolRandomWaypoints>();
+
+                AlertProgress("Finished Creating PatrolRandomWaypoints");
+            }
+
+            DirectionChecker directionChecker = characterData.character.GetComponent<DirectionChecker>();
+            if (directionChecker)
+            {
+                AlertProgress("Character DirectionChecker Found");
+            }
+            else
+            {
+                AlertProgress("DirectionChecker not found");
+                AlertProgress("Creating DirectionChecker");
+
+                directionChecker = characterData.character.AddComponent<DirectionChecker>();
+                directionChecker.enableLogging = false;
+                directionChecker.doFlip = true;
+
+                AlertProgress("Finished Creating DirectionChecker");
+            }
+
+            AgentAnimator agentAnimator = characterData.character.GetComponent<AgentAnimator>();
+            if (agentAnimator)
+            {
+                AlertProgress("Character AgentAnimator Found");
+            }
+            else
+            {
+                AlertProgress("AgentAnimator not found");
+                AlertProgress("Creating AgentAnimator");
+
+                agentAnimator = characterData.character.AddComponent<AgentAnimator>();
+
+                AlertProgress("Finished Creating AgentAnimator");
+            }
+
+            FindClosestEnemy findClosestEnemy = characterData.character.GetComponent<FindClosestEnemy>();
+            if (findClosestEnemy)
+            {
+                AlertProgress("Character FindClosestEnemy Found");
+            }
+            else
+            {
+                AlertProgress("FindClosestEnemy not found");
+                AlertProgress("Creating FindClosestEnemy");
+
+                findClosestEnemy = characterData.character.AddComponent<FindClosestEnemy>();
+                findClosestEnemy.detectionRange = 100;
+
+                AlertProgress("Finished Creating FindClosestEnemy");
+            }
+
+
+            FollowTarget followTarget = characterData.character.GetComponent<FollowTarget>();
+            if (followTarget)
+            {
+                AlertProgress("Character FollowTarget Found");
+            }
+            else
+            {
+                AlertProgress("FollowTarget not found");
+                AlertProgress("Creating FollowTarget");
+
+                followTarget = characterData.character.AddComponent<FollowTarget>();
+                followTarget.enabled = false;
+
+                AlertProgress("Finished Creating FollowTarget");
+            }
+
+            LightAttackAction lightAttackAction = characterData.character.GetComponent<LightAttackAction>();
+            if (lightAttackAction)
+            {
+                AlertProgress("Character LightAttackAction Found");
+            }
+            else
+            {
+                AlertProgress("LightAttackAction not found");
+                AlertProgress("Creating LightAttackAction");
+
+                lightAttackAction = characterData.character.AddComponent<LightAttackAction>();
+                lightAttackAction.attackRange = 12.34f;
+                lightAttackAction.enemyLayer = LayerMask.GetMask("Player");
+                lightAttackAction.attackCooldown = 1f;
+
+                AlertProgress("Finished Creating LightAttackAction");
+            }
+
             return true;
         }
 
@@ -617,7 +782,7 @@ namespace Lunarsoft.Tools
                     return continue_setup;
                 }
 
-                continue_setup = SetupPlayerController();
+                continue_setup = SetupAIPlayerController();
                 if (continue_setup == false)
                 {
                     return continue_setup;
@@ -634,20 +799,36 @@ namespace Lunarsoft.Tools
                 {
                     return continue_setup;
                 }
+
+                continue_setup = SetupDialogue();
+                if (continue_setup == false)
+                {
+                    return continue_setup;
+                }
+
+                continue_setup = SetupPolyNavAgent();
+                if (continue_setup == false)
+                {
+                    return continue_setup;
+                }
+
+                
             }
 
             AlertProgress("Check Character Dependencies complete");
             return continue_setup;
         }
 
+      
+
         #endregion
 
         #region Editor GUI
 
-        [MenuItem("Lunarsoft/Generators/Quick Setup Character")]
+        [MenuItem("Lunarsoft/Generators/Quick AI Character Setup")]
         public static void ShowWindow()
         {
-            window = EditorWindow.GetWindow<LSCharacterGeneratorWindow>("Quick Character Setup");
+            window = EditorWindow.GetWindow<LSAICharacterGeneratorWindow>("Quick AI Character Setup");
             window.minSize = new Vector2(400, 460);
             window.maxSize = new Vector2(400, 460);
             window.Show();
@@ -655,8 +836,8 @@ namespace Lunarsoft.Tools
 
         public virtual void OnEnable()
         {
-            splashTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Lunarsoft/Textures/CharacterGenerator.png");
-            characterData = new SharedCharacterData();
+            splashTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Lunarsoft/Textures/AICharacterGenerator.png");
+            characterData.selectedLayer = 7;
         }
 
         public override void OnGUI()
@@ -681,14 +862,11 @@ namespace Lunarsoft.Tools
 
             EditorGUILayout.Separator();
 
-            characterData.camera_tag = EditorGUILayout.TagField("Camera Tag", characterData.camera_tag);
-            characterData.camera = (GameObject)EditorGUILayout.ObjectField("Player Camera", characterData.camera, typeof(GameObject), true);
-
             EditorGUILayout.Separator();
-            characterData.selectedLayer = EditorGUILayout.LayerField("Player Layer:", characterData.selectedLayer);
+            characterData.selectedLayer = EditorGUILayout.LayerField("AI Layer:", characterData.selectedLayer);
 
-            characterData.character = (GameObject)EditorGUILayout.ObjectField("Player Prefab", characterData.character, typeof(GameObject), true);
-            characterData.characterStats = (CharacterStats)EditorGUILayout.ObjectField("Character Stats Defaults", characterData.characterStats, typeof(CharacterStats), true);
+            characterData.character = (GameObject)EditorGUILayout.ObjectField("AI Prefab", characterData.character, typeof(GameObject), true);
+            characterData.characterStats = (CharacterStats)EditorGUILayout.ObjectField("AI Stats Defaults", characterData.characterStats, typeof(CharacterStats), true);
             characterData.shadowPrefab = (GameObject)EditorGUILayout.ObjectField("Shadow Prefab", characterData.shadowPrefab, typeof(GameObject), true);
 
             characterData.footStepVFXPrefab = (GameObject)EditorGUILayout.ObjectField("Footstep Vfx Prefab", characterData.footStepVFXPrefab, typeof(GameObject), true);
@@ -701,8 +879,7 @@ namespace Lunarsoft.Tools
 
             EditorGUILayout.Separator();
 
-            GUI.enabled = characterData.character != null
-                && characterData.camera != null;
+            GUI.enabled = characterData.character != null;
                 //&& character_defaults != null
                 //&& leftHand != null
                 //&& rightHand != null;

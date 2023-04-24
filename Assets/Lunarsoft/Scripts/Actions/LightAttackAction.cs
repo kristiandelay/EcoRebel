@@ -5,8 +5,8 @@ namespace Lunarsoft
 {
     public class LightAttackAction : BaseAction
     {
-        [SerializeField] private float attackRange = 1f;
-        [SerializeField] private LayerMask enemyLayer;
+        [SerializeField] public float attackRange = 1f;
+        [SerializeField] public LayerMask enemyLayer;
         [SerializeField] private Transform attackPoint;
         [SerializeField] public float attackCooldown = 1f;
         [SerializeField] private GameObject hitEffectPrefab;
