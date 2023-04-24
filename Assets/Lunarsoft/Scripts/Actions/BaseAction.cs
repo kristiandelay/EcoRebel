@@ -6,14 +6,14 @@ namespace Lunarsoft
 {
     public class BaseAction : MonoBehaviour
     {
-        public PlayerController controller;
+        public BaseController controller;
 
         // Start is called before the first frame update
         virtual protected void Start()
         {
             if (controller == null)
             {
-                controller = GetComponent<PlayerController>();
+                controller = GetComponent<BaseController>();
             }
         }
 

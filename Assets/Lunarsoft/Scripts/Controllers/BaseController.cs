@@ -24,6 +24,7 @@ namespace Lunarsoft
 
         public Vector3 originalScale;
 
+        public CharacterStats characterStats;
 
         virtual protected void Awake() { }
 

@@ -16,6 +16,7 @@ namespace Lunarsoft
         [SerializeField] private AudioSource audioSource;
 
 
+        public bool isAI = false;
         private float currentAttackCooldown = 0f;
         public bool isAttacking { get; private set; }
         public bool enableHitbox { get; private set; }
@@ -29,6 +30,11 @@ namespace Lunarsoft
             if (audioSource == null)
             {
                 audioSource = GetComponent<AudioSource>();
+            }
+
+            if(GetComponent<AIController>() != null)
+            {
+                isAI = true;
             }
         }
 
@@ -54,10 +60,13 @@ namespace Lunarsoft
             float currentAttackSpeed = controller.characterStats.AttackSpeed.GetValueAtLevel(controller.characterStats.level);
             float calculatedCooldown = attackCooldown / currentAttackSpeed;
 
-            if (currentAttackCooldown <= 0 && Input.GetKeyDown(KeyCode.J))
+            if (isAI == false)
             {
-                PerformAttack();
-                currentAttackCooldown = calculatedCooldown;
+                if (currentAttackCooldown <= 0 && Input.GetKeyDown(KeyCode.J))
+                {
+                    PerformAttack();
+                    currentAttackCooldown = calculatedCooldown;
+                }
             }
         }
 
@@ -80,38 +89,38 @@ namespace Lunarsoft
                     continue; // Enemy has already been hit during this attack
                 }
 
-                AIController aiController = enemy.GetComponent<AIController>();
-                if (aiController != null)
+                BaseController controller = enemy.GetComponent<BaseController>();
+                if (controller != null)
                 {
                     float damage = controller.characterStats.AttackDamage.GetValueAtLevel(controller.characterStats.level);
 
-                    // Instantiate hit effect prefab at attack point position with same scale signum as player
                     if (hitEffectPrefab != null)
                     {
                         GameObject hitEffectInstance = Instantiate(hitEffectPrefab, attackPoint.position, Quaternion.identity);
                         hitEffectInstance.transform.localScale *= Mathf.Sign(controller.transform.localScale.x);
                     }
 
-                    // Calculate the dot product between the player's forward direction and the playerToEnemy vector
-                    bool playerOnLeftSide = (aiController.root.transform.position.x - controller.transform.position.x) > 0;
+                    bool playerOnLeftSide = (controller.root.transform.position.x - controller.transform.position.x) > 0;
 
                     string animationHit = "Hit";
                     if (playerOnLeftSide)
                     {
-                        // Player is hitting the right side of the enemy
-                        animationHit = "HitBack";
+                        if(controller.facingRight == true)
+                        {
+                            animationHit = "HitBack";
+                        }
                     }
                     else
                     {
-                        // Player is hitting the left side of the enemy
-                        animationHit = "Hit";
-                        // controller.animator.SetTrigger("LeftHit");
+                        if (controller.facingRight == false)
+                        {
+                            animationHit = "HitBack";
+                        }
                     }
 
-                    // Draw line between player and hit position for debugging
-                    Debug.DrawLine(controller.transform.position, aiController.root.transform.position, Color.yellow, 2f);
+                    Debug.DrawLine(controller.transform.position, controller.root.transform.position, Color.yellow, 2f);
                     PlayRandomAttackImpactSound();
-                    aiController.TakeDamage(damage, animationHit);
+                    controller.TakeDamage(damage, animationHit);
                     hitEnemies.Add(enemy);
                 }
             }

@@ -14,8 +14,6 @@ public class PlayerController : BaseController
     public CinemachineVirtualCamera virtualCamera;
     public Camera cam;
 
-    public CharacterStats characterStats;
-
     public float maxHealth = 0;
     public float currentHealth = 0;
     public float currentSpeed = 0;
@@ -86,6 +84,7 @@ public class PlayerController : BaseController
         currentHealth -= damage;
 
         // Play any damage taken animations or sounds here
+        animator.SetTrigger(animationTrigger);
 
         if (currentHealth <= 0)
         {

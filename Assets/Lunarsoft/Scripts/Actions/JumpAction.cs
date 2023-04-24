@@ -18,7 +18,6 @@ namespace Lunarsoft
         {
             base.Start();
             shadowAction = controller.GetComponent<ShadowAction>();
-
         }
 
         override protected void Update()
