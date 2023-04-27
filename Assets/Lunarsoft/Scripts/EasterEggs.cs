@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EasterEggs : MonoBehaviour
 {
@@ -48,6 +49,8 @@ public class EasterEggs : MonoBehaviour
 
                 // Perform the desired action when the Konami Code is triggered
                 Debug.Log("Konami Code triggered!");
+                SceneManager.LoadScene(1);
+
             }
         }
         else if (Input.anyKeyDown)

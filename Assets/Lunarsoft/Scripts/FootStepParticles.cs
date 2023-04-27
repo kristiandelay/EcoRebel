@@ -16,7 +16,7 @@ namespace Lunarsoft
         [Tooltip("The array of footstep sounds to play when the footstep effect is triggered.")]
         public AudioClip[] footstepSounds;
         [Tooltip("The minimum and maximum volume of the footstep sound.")]
-        public Vector2 soundVolumeRange = new Vector2(0.5f, 0.8f);
+        public Vector2 soundVolumeRange = new Vector2(0.9f, 1f);
 
         private AudioSource audioSource;
 
@@ -24,9 +24,9 @@ namespace Lunarsoft
         {
             audioSource = GetComponent<AudioSource>();
 
-            audioSource.spatialBlend = 1.0f; // 1.0f for 3D sound, 0.0f for 2D sound
+            audioSource.spatialBlend = 1f; // 1.0f for 3D sound, 0.0f for 2D sound
             audioSource.minDistance = 1.0f; // The distance where the sound volume starts attenuating
-            audioSource.maxDistance = 50.0f; // The distance where the sound volume reaches zero
+            audioSource.maxDistance = 150.0f; // The distance where the sound volume reaches zero
 
         }
 
@@ -48,7 +48,7 @@ namespace Lunarsoft
             {
                 int randomIndex = Random.Range(0, footstepSounds.Length);
                 audioSource.clip = footstepSounds[randomIndex];
-                audioSource.volume = Random.Range(soundVolumeRange.x, soundVolumeRange.y);
+                audioSource.volume = 1;
                 audioSource.Play();
             }
         }

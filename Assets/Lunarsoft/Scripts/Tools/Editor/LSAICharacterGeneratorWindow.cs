@@ -683,6 +683,7 @@ namespace Lunarsoft.Tools
 
                 findClosestEnemy = characterData.character.AddComponent<FindClosestEnemy>();
                 findClosestEnemy.detectionRange = 100;
+                findClosestEnemy.enemyLayer = LayerMask.GetMask("Player");
 
                 AlertProgress("Finished Creating FindClosestEnemy");
             }

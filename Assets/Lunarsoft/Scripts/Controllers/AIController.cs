@@ -10,6 +10,9 @@ namespace Lunarsoft
 
         public AIStateBase currentState;
 
+        public delegate void EnemyDeath(GameObject enemy);
+        public static event EnemyDeath OnEnemyDeath;
+
         protected override void Awake()
         {
             bounds = FindAnyObjectByType<LevelBounds>()?.GetComponent<PolygonCollider2D>();
@@ -38,11 +41,6 @@ namespace Lunarsoft
             currentState?.EnterState();
         }
 
-        public override void Die()
-        {
-
-        }
-
         public override void TakeDamage(float damage, string animationTrigger = "Hit")
         {
             animator.SetTrigger(animationTrigger);
@@ -56,6 +54,20 @@ namespace Lunarsoft
         protected override void Update()
         {
             currentState?.UpdateState();
+
+            if(currentHealth < 0)
+            {
+                Die();
+            }
         }
+
+        public override void Die()
+        {
+            OnEnemyDeath?.Invoke(gameObject);
+            Destroy(gameObject);
+        }
+
+      
+
     }
 }

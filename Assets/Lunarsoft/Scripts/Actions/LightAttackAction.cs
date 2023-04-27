@@ -130,6 +130,9 @@ namespace Lunarsoft
                     Debug.DrawLine(controller.transform.position, baseController.root.transform.position, Color.yellow, 2f);
                     PlayRandomAttackImpactSound();
                     baseController.TakeDamage(damage, animationHit);
+                    Vector2 direction = (baseController.transform.position - controller.transform.position).normalized;
+                    float force = 50f;
+                    baseController.ApplyKnockback(direction, force);
                     hitEnemies.Add(enemy);
                 }
             }

@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Lunarsoft/Scenes/AnimationScene.unity
     guid: 8ce0c8b5be4ce4066a76f2e404e73271
+  - enabled: 1
+    path: Assets/Lunarsoft/Scenes/CowLevel.unity
+    guid: dfa86d9e104914f2b8aa6f100ecc00f6
   m_configObjects: {}

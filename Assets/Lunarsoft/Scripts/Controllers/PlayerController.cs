@@ -13,22 +13,18 @@ public class PlayerController : BaseController
 
     public CinemachineVirtualCamera virtualCamera;
     public Camera cam;
+    
 
-    public float maxHealth = 0;
-    public float currentHealth = 0;
-    public float currentSpeed = 0;
 
     private BaseApi _baseApi;
 
     protected override void Awake()
     {
         // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
+        base.Awake();
+        virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        cam = FindObjectOfType<Camera>();
 
-        if (characterStats != null)
-        {
-            maxHealth = currentHealth = characterStats.Health.GetValueAtLevel(characterStats.level);
-            currentSpeed = characterStats.Speed.GetValueAtLevel(characterStats.level);
-        }
 
         bounds = FindAnyObjectByType<LevelBounds>()?.GetComponent<PolygonCollider2D>();
 
@@ -70,12 +66,7 @@ public class PlayerController : BaseController
 
     public override void Move(Vector2 direction)
     {
-        Vector3 newPosition = transform.position + (Vector3)direction * currentSpeed * Time.deltaTime;
-        if (IsInsideBounds(newPosition))
-        {
-            transform.position = newPosition;
-            UpdateAnimator(direction);
-        }
+        base.Move(direction);
     }
 
     // Override the TakeDamage function to use the character's health stat
@@ -96,5 +87,6 @@ public class PlayerController : BaseController
     public override void Die()
     {
         // Implement your die logic here
+        Debug.Log("You Dead af my guy");
     }
 }

@@ -6,7 +6,7 @@ namespace Lunarsoft
     public class FindClosestEnemy : MonoBehaviour
     {
         [SerializeField]
-        private LayerMask enemyLayer;
+        public LayerMask enemyLayer;
 
         public float detectionRange = 10f;
         public Color closestLineColor = Color.green;
@@ -22,7 +22,7 @@ namespace Lunarsoft
             DrawLinesToEnemies();
         }
 
-        private void FindEnemies()
+        public void FindEnemies()
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRange, enemyLayer);
             closestEnemy = null;
