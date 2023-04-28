@@ -16,7 +16,10 @@ namespace Lunarsoft
             if (enableDebugLogs) Debug.Log("EnterState");
             controller = GetComponent<AIController>();
             findClosestEnemy = GetComponent<FindClosestEnemy>();
-            findClosestEnemy.FindEnemies();
+            if (findClosestEnemy != null)
+            {
+                findClosestEnemy.FindEnemies();
+            }
             agent = GetComponent<PolyNavAgent>();
             OnEnterState();
         }

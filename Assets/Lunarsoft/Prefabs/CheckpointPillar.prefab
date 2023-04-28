@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &482821451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 482821452}
+  m_Layer: 0
+  m_Name: SpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &482821452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482821451}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.7, y: 24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 968327807731753474}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1577875152297536763
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,8 +103,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -749842423
-  m_SortingLayer: 2
+  m_SortingLayerID: 1515651067
+  m_SortingLayer: 7
   m_SortingOrder: 2
   m_Sprite: {fileID: -8887837534553460242, guid: f571b2c40082f48339259ee52123ed42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -134,7 +165,6 @@ GameObject:
   - component: {fileID: 968327807731753474}
   - component: {fileID: 1900491596364651487}
   - component: {fileID: 1900491596364651480}
-  - component: {fileID: 3919433151655450861}
   m_Layer: 0
   m_Name: CheckpointPillar
   m_TagString: Untagged
@@ -157,6 +187,7 @@ Transform:
   - {fileID: 8805559408424656732}
   - {fileID: 1576203131226528236}
   - {fileID: 384298910203463202}
+  - {fileID: 482821452}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -201,27 +232,10 @@ MonoBehaviour:
   activeObject: {fileID: 1577875152297536763}
   checkpointActive: 0
   checkpointCollider: {fileID: 1900491596364651487}
---- !u!95 &3919433151655450861
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2141506524171778657}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a3da4f2ec8faf4eebbbd09fdb7c9d0e8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  animator: {fileID: 0}
+  spawnLocation: {fileID: 482821452}
+  playerPrefab: {fileID: 9012603635936798991, guid: 6faf6385957504eb6973bfef4c804067, type: 3}
+  herosJourneyStep: 1
 --- !u!1 &2325728315408992895
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,8 +306,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -749842423
-  m_SortingLayer: 2
+  m_SortingLayerID: 1515651067
+  m_SortingLayer: 7
   m_SortingOrder: 1
   m_Sprite: {fileID: 594132059393196673, guid: f571b2c40082f48339259ee52123ed42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -317,7 +331,7 @@ GameObject:
   - component: {fileID: 8805559408424656732}
   - component: {fileID: 1379007211391829732}
   m_Layer: 0
-  m_Name: Layer 1
+  m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,8 +390,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -749842423
-  m_SortingLayer: 2
+  m_SortingLayerID: 1515651067
+  m_SortingLayer: 7
   m_SortingOrder: 3
   m_Sprite: {fileID: -1407969041550414164, guid: f571b2c40082f48339259ee52123ed42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

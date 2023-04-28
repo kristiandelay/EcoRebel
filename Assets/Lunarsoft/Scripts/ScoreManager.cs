@@ -4,10 +4,36 @@ using System.Collections;
 
 namespace Lunarsoft
 {
+
+    public enum HerosJourneyStep
+    {
+        // World Checkpoints
+        CowExit,
+
+        // Departure (Separation)
+        OrdinaryWorld,
+        CallToAdventure,
+        RefusalOfTheCall,
+        MeetingTheMentor,
+        CrossingTheThreshold,
+
+        // Initiation
+        TestsAlliesEnemies,
+        ApproachToTheInmostCave,
+        TheOrdeal,
+        RewardSeizingTheSword,
+
+        // Return
+        TheRoadBack,
+        Resurrection,
+        ReturnWithTheElixir
+    }
+
     public class ScoreManager : MonoBehaviour
     {
         public static ScoreManager instance;
 
+        public PlayerController playerController;
         public int score = 0;
         public Text scoreText;
 
@@ -17,28 +43,8 @@ namespace Lunarsoft
         private int kills = 0;
         private int deaths = 0;
 
-        public enum HerosJourneyStep
-        {
-            // Departure (Separation)
-            OrdinaryWorld,
-            CallToAdventure,
-            RefusalOfTheCall,
-            MeetingTheMentor,
-            CrossingTheThreshold,
-
-            // Initiation
-            TestsAlliesEnemies,
-            ApproachToTheInmostCave,
-            TheOrdeal,
-            RewardSeizingTheSword,
-
-            // Return
-            TheRoadBack,
-            Resurrection,
-            ReturnWithTheElixir
-        }
-
         public HerosJourneyStep currentProgress;
+        public CheckPoint currentCheckPoint;
 
         private void Awake()
         {
@@ -54,10 +60,51 @@ namespace Lunarsoft
             }
         }
 
+
         private void Start()
         {
             UpdateScoreText();
-            StartCoroutine(SaveDataCoroutine()); // Start the coroutine to save data every 10 seconds
+            StartCoroutine(SaveDataCoroutine());
+
+            SpawnAtCurrentCheckPoint();
+        }
+
+        private void Update()
+        {
+            if(playerController == null)
+            {
+                SpawnAtCurrentCheckPoint();
+            }
+        }
+
+        public void SpawnAtCurrentCheckPoint()
+        {
+            CheckPoint[] checkPoints = FindObjectsOfType<CheckPoint>();
+
+            foreach (CheckPoint checkPoint in checkPoints)
+            {
+                if (checkPoint.herosJourneyStep == currentProgress)
+                {
+                    currentCheckPoint = checkPoint;
+                    Debug.Log("Found matching CheckPoint with herosJourneyStep: " + currentProgress);
+                    GameObject player = currentCheckPoint.SpawnPlayer();
+                    playerController = player.GetComponent<PlayerController>();
+                    
+                    break;
+                }
+            }
+
+            if (currentCheckPoint == null)
+            {
+                Debug.Log("No matching CheckPoint found for herosJourneyStep: " + currentProgress);
+            }
+        }
+
+        public void UpdateProgress(HerosJourneyStep step)
+        {
+            Debug.Log("Checkoint reached " + step);
+            currentProgress = step;
+            SaveData();
         }
 
         public void AddKill()
@@ -117,6 +164,8 @@ namespace Lunarsoft
             }
 
             currentProgress = (HerosJourneyStep)PlayerPrefs.GetInt("CurrentProgress", 0);
+
+            Debug.Log("currentProgress: " + currentProgress);
         }
 
         private IEnumerator SaveDataCoroutine()

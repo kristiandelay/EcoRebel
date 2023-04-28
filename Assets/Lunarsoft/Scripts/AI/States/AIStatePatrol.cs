@@ -9,12 +9,16 @@ namespace Lunarsoft
 
         protected override void OnEnterState()
         {
-            GetComponent<PatrolRandomWaypoints>().enabled = true;
+            PatrolRandomWaypoints waypoint = GetComponent<PatrolRandomWaypoints>();
+            if(waypoint != null)
+            {
+                waypoint.enabled = true;
+            }
         }
 
         protected override void OnUpdateState()
         {
-            if(findClosestEnemy.closestEnemy != null)
+            if(findClosestEnemy?.closestEnemy != null)
             {
                 controller.SetState<AIStatePursue>();
             }
@@ -22,7 +26,11 @@ namespace Lunarsoft
 
         protected override void OnExitState()
         {
-            GetComponent<PatrolRandomWaypoints>().enabled = false;
+            PatrolRandomWaypoints waypoint = GetComponent<PatrolRandomWaypoints>();
+            if (waypoint != null)
+            {
+                waypoint.enabled = false;
+            }
         }
     }
 

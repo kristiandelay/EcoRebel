@@ -13,8 +13,6 @@ public class AgentAnimator : MonoBehaviour
         get { return _agent != null ? _agent : _agent = GetComponent<PolyNavAgent>(); }
     }
 
-
-
     private AIController _controller;
     private AIController controller
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 namespace Lunarsoft
@@ -12,6 +13,15 @@ namespace Lunarsoft
 
         public BoxCollider2D checkpointCollider;
         public Animator animator;
+
+        public Transform spawnLocation;
+        public GameObject playerPrefab;
+
+        public CinemachineVirtualCamera virtualCamera;
+
+        public HerosJourneyStep herosJourneyStep;
+
+        [SerializeField] private string sceneToLoad;
 
         // Start is called before the first frame update
         void Start()
@@ -32,6 +42,8 @@ namespace Lunarsoft
             {
                 animator.SetTrigger("Activated");
                 checkpointActive = true;
+                ScoreManager.instance.AddPoints(1000);
+                ScoreManager.instance.UpdateProgress(herosJourneyStep);
             }
         }
 
@@ -41,6 +53,16 @@ namespace Lunarsoft
             {
                 Activate();
             }
+        }
+
+        public GameObject SpawnPlayer()
+        {
+            GameObject playerInstance = Instantiate(playerPrefab, spawnLocation.position, spawnLocation.rotation);
+
+            virtualCamera.Follow = playerInstance.transform;
+            virtualCamera.LookAt = playerInstance.transform;
+
+            return playerInstance;
         }
     }
 }

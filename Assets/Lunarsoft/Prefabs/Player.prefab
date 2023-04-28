@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &682170385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682170386}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &682170386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682170385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5, y: 8.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8859984124151459841}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &807238539572897838
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +74,7 @@ GameObject:
   - component: {fileID: 4869536467040304252}
   - component: {fileID: 4095517524855262282}
   - component: {fileID: 8857047916012414117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,8 +166,8 @@ MonoBehaviour:
   - {fileID: 5209796162718749441}
   - {fileID: 9125990918717140256}
   m_Bounds:
-    m_Center: {x: -0.27708006, y: 0.027840614, z: 0}
-    m_Extent: {x: 5.062975, y: 9.652167, z: 0}
+    m_Center: {x: -0.27697134, y: 0.027840614, z: 0}
+    m_Extent: {x: 5.0629597, y: 9.652158, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -290,7 +321,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4848046464380515015}
-  m_LocalRotation: {x: 0, y: 0, z: 0.9902749, w: 0.13912502}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9902755, w: 0.13912064}
   m_LocalPosition: {x: -0.7966687, y: 7.0843554, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -322,7 +353,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5024735462054147730}
-  m_LocalRotation: {x: 0, y: 0, z: 0.9795695, w: 0.20110625}
+  m_LocalRotation: {x: 0, y: 0, z: 0.97956914, w: 0.20110789}
   m_LocalPosition: {x: 13.015323, y: 13.015345, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -374,7 +405,7 @@ GameObject:
   - component: {fileID: 1367995665043343357}
   - component: {fileID: 7566034467381763119}
   - component: {fileID: 6555755769331422294}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,8 +497,8 @@ MonoBehaviour:
   - {fileID: 8342455962948222764}
   - {fileID: 8383075937270612023}
   m_Bounds:
-    m_Center: {x: 0.045503616, y: -0.013563156, z: 0}
-    m_Extent: {x: 6.401419, y: 9.87948, z: 0}
+    m_Center: {x: 0.04551077, y: -0.013544083, z: 0}
+    m_Extent: {x: 6.401378, y: 9.879472, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -517,7 +548,7 @@ GameObject:
   - component: {fileID: 1625439657485234450}
   - component: {fileID: 3507080819156704052}
   - component: {fileID: 1719340071704247764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +643,7 @@ MonoBehaviour:
   - {fileID: 7006814587310811354}
   - {fileID: 7212682297664315243}
   m_Bounds:
-    m_Center: {x: 0, y: 0.019496918, z: 0}
+    m_Center: {x: 0, y: 0.019500732, z: 0}
     m_Extent: {x: 20.999998, y: 22.8405, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -671,7 +702,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8265644328735933782}
-  m_LocalRotation: {x: 0, y: 0, z: -0.89008605, w: 0.4557926}
+  m_LocalRotation: {x: 0, y: 0, z: -0.89008653, w: 0.45579162}
   m_LocalPosition: {x: 12.765639, y: -9.778726, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -691,7 +722,7 @@ GameObject:
   - component: {fileID: 6095688419521842918}
   - component: {fileID: 7392557727796464227}
   - component: {fileID: 252875833191723226}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -783,8 +814,8 @@ MonoBehaviour:
   - {fileID: 5256134132246541799}
   - {fileID: 7212682297664315243}
   m_Bounds:
-    m_Center: {x: -0.15789413, y: -0.7260809, z: 0}
-    m_Extent: {x: 8.31337, y: 7.3171797, z: 0}
+    m_Center: {x: -0.15776062, y: -0.7260952, z: 0}
+    m_Extent: {x: 8.313358, y: 7.3171883, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -811,7 +842,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8694704732059864304}
-  m_LocalRotation: {x: 0, y: 0, z: -0.97924423, w: 0.20268393}
+  m_LocalRotation: {x: 0, y: 0, z: -0.97924393, w: 0.20268543}
   m_LocalPosition: {x: 1.22948, y: -5.6194434, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -829,7 +860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859984122497853727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MountSpawnTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,7 +892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8859984122566677369}
   - component: {fileID: 8859984122566677368}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftLegIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -983,7 +1014,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859984122847102155}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightArmIK_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,7 +1045,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859984123021818415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MountTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1078,7 +1109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859984123964351520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftArmIK_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859984124095125531}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightLegIK_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1198,7 +1229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859984124150391653}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1279,8 @@ Transform:
   m_LocalPosition: {x: 6.6, y: 9.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 682170386}
   m_Father: {fileID: 8859984123564522694}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15.612}
@@ -1313,7 +1345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859984124251670059}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftLegIK_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1345,7 +1377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8859984124277818513}
   - component: {fileID: 8859984124277818512}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightArmIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,7 +1442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8859984124305606047}
   - component: {fileID: 8859984124305606046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightLegIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1507,7 +1539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8859984124614535751}
   - component: {fileID: 8859984124614535750}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftArmIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1588,9 +1620,12 @@ GameObject:
   - component: {fileID: 8859984122673386049}
   - component: {fileID: 8859984122673386050}
   - component: {fileID: 8859984122673386051}
-  m_Layer: 0
+  - component: {fileID: 1670789331151765185}
+  - component: {fileID: 1670789331151765183}
+  - component: {fileID: 1670789331151765184}
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1705,11 +1740,11 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 150
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1717,23 +1752,32 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.002
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -3.5565917
+      outSlope: -3.5565917
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.23330307
+    - serializedVersion: 3
+      time: 0.27804896
+      value: 0.4147644
+      inSlope: -1.1879241
+      outSlope: -1.1879241
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.36175895
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 0.002
+      inSlope: -0.002000801
+      outSlope: -0.002000801
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1742,7 +1786,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1757,7 +1801,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.175
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1772,7 +1816,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.0029488
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1839,7 +1883,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 34b43d72f72f0d842bdd6d9d69ffb058, type: 3}
   - {fileID: 8300000, guid: ea9e51406c55ceb49b532c8bde93fe42, type: 3}
   - {fileID: 8300000, guid: 3d20f0ec06bc4b84b899b94953f93457, type: 3}
-  soundVolumeRange: {x: 0.2, y: 0.8}
+  soundVolumeRange: {x: 0.9, y: 1}
 --- !u!114 &8859984122673386164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1853,12 +1897,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  magicBoltPrefab: {fileID: 0}
-  firePoint: {fileID: 0}
-  fireRate: 1
+  magicBoltPrefab: {fileID: 1595252117517162, guid: e7776336bc56a9b4caa1c90ea92ff765, type: 3}
+  firePoint: {fileID: 682170386}
+  fireRate: 10
   boltSpeed: 50
   destroyAfter: 5
-  magicspawnVFX: []
+  magicspawnVFX:
+  - {fileID: 1024167407391004, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
   magicSpawnSound: []
 --- !u!114 &8859984122673386165
 MonoBehaviour:
@@ -1873,16 +1918,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  attackRange: 1
+  attackRange: 12.34
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
-  attackPoint: {fileID: 0}
+    m_Bits: 128
+  attackPoint: {fileID: 682170386}
   attackCooldown: 1
   hitEffectPrefab: {fileID: 0}
-  attackSounds: []
-  attackImpactSounds: []
+  attackSounds:
+  - {fileID: 8300000, guid: 96e724471f919460aaec961d9067105b, type: 3}
+  - {fileID: 8300000, guid: da74272130a804998a395f099d6fd092, type: 3}
+  - {fileID: 8300000, guid: 613efd7eed6604ebd9d447bf72f2d69c, type: 3}
+  - {fileID: 8300000, guid: a1bb70803ef6046fd9ed5c47e353d8c0, type: 3}
+  - {fileID: 8300000, guid: 50d1df1a6ee18488da71a53817e52556, type: 3}
+  - {fileID: 8300000, guid: 3272350db228e40618fd188751a37149, type: 3}
+  - {fileID: 8300000, guid: a3d9cab39811e48afb67592267b6e839, type: 3}
+  - {fileID: 8300000, guid: 4c5a35d810b2047a9a4212e628c2fbf5, type: 3}
+  - {fileID: 8300000, guid: 391117639b0ea405eb8b7557388c4ca7, type: 3}
+  - {fileID: 8300000, guid: 965dc4162bb7646e4ae74465524fa696, type: 3}
+  - {fileID: 8300000, guid: 802675923133b4375a341020abd12649, type: 3}
+  - {fileID: 8300000, guid: b1aeb1b18c1664455aa9d12511016021, type: 3}
+  - {fileID: 8300000, guid: d0999fce9297142f28eecd824a6c75be, type: 3}
+  - {fileID: 8300000, guid: 16213dce07253464bb450a353c386ba2, type: 3}
+  - {fileID: 8300000, guid: 135b7203462d84de9ba8426a4ec3d891, type: 3}
+  attackImpactSounds:
+  - {fileID: 8300000, guid: 0cac2816f790b4fe4b547d3b2e787c9a, type: 3}
+  - {fileID: 8300000, guid: 3013e6c11749a4bb5adb5524d7d39546, type: 3}
+  - {fileID: 8300000, guid: d2268ca64d2244b80939ddc27c3b159d, type: 3}
+  - {fileID: 8300000, guid: 52498111619ca49cdb8ea3005850a509, type: 3}
+  - {fileID: 8300000, guid: d3e6e66c04c134452bed9ba218cb31a0, type: 3}
+  - {fileID: 8300000, guid: ca3de99abd5714bbab5289b3db9812e9, type: 3}
   audioSource: {fileID: 0}
+  isAI: 0
+  triggerAttack: 0
+  currentAttackCooldown: 0
 --- !u!114 &8859984122673386166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,13 +2040,14 @@ MonoBehaviour:
   verticalInput: 0
   facingRight: 1
   originalScale: {x: 0, y: 0, z: 0}
-  playerId: 0
-  virtualCamera: {fileID: 0}
-  cam: {fileID: 0}
   characterStats: {fileID: 11400000, guid: 32bdb5c1068f645278876522b22a7b2a, type: 2}
+  rb: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
   currentSpeed: 0
+  playerId: 0
+  virtualCamera: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!114 &8859984122673386174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2018,7 +2088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_key: Player
-  m_appendSaverTypeToKey: 0
+  m_appendSaverTypeToKey: 1
   m_saveAcrossSceneChanges: 1
   m_restoreStateOnStart: 1
   m_target: {fileID: 0}
@@ -2051,10 +2121,46 @@ MonoBehaviour:
   conversationEvents:
     onConversationStart:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 8859984122673386169}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 9012603635936798991}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     onConversationEnd:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 8859984122673386169}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     runOnConversationEndEventsAtEndOfFrame: 0
     onConversationCancelled:
       m_PersistentCalls:
@@ -2114,6 +2220,99 @@ MonoBehaviour:
     onDialogueSystemUnpause:
       m_PersistentCalls:
         m_Calls: []
+--- !u!61 &1670789331151765185
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012603635936798991}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 30.52}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
+--- !u!114 &1670789331151765183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012603635936798991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f17d3292d455242a47944a59dea99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagSpecificElements: []
+  layerSpecificElements:
+  - layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    defaultUseMessage: 
+    UIElements: {fileID: 0}
+--- !u!114 &1670789331151765184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012603635936798991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963d6358c55a0f44d8de57bee560f184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDefaultGUI: 1
+  guiSkin: {fileID: 0}
+  guiStyleName: label
+  alignment: 1
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  textStyle: 1
+  textStyleColor: {r: 0, g: 0, b: 0, a: 1}
+  defaultUseMessage: (enter to interact)
+  useKey: 13
+  useButton: Fire2
+  enableTouch: 0
+  touchArea:
+    origin: 0
+    alignment: 0
+    x:
+      scale: 0
+      value: 0
+    y:
+      scale: 0
+      value: 0
+    width:
+      scale: 0
+      value: 0
+    height:
+      scale: 0
+      value: 0
+    minPixelWidth: 0
+    minPixelHeight: 0
+  broadcastToChildren: 1
+  actorTransform: {fileID: 0}
+  onSelectedUsable:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselectedUsable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9054294541454329382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,7 +2324,7 @@ GameObject:
   - component: {fileID: 2584487669252009206}
   - component: {fileID: 9131110401358146079}
   - component: {fileID: 6689445895824465080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2217,8 +2416,8 @@ MonoBehaviour:
   - {fileID: 6393698590917985516}
   - {fileID: 1675682855887528302}
   m_Bounds:
-    m_Center: {x: 0.21807861, y: 0.008154869, z: 0}
-    m_Extent: {x: 6.7280807, y: 8.788166, z: 0}
+    m_Center: {x: 0.21808052, y: 0.008163452, z: 0}
+    m_Extent: {x: 6.7280946, y: 8.78816, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
