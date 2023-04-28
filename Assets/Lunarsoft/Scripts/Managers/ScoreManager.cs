@@ -7,9 +7,6 @@ namespace Lunarsoft
 
     public enum HerosJourneyStep
     {
-        // World Checkpoints
-        CowExit,
-
         // Departure (Separation)
         OrdinaryWorld,
         CallToAdventure,
@@ -26,7 +23,10 @@ namespace Lunarsoft
         // Return
         TheRoadBack,
         Resurrection,
-        ReturnWithTheElixir
+        ReturnWithTheElixir,
+
+        // Other World Checkpoints
+        CowExit,
     }
 
     public class ScoreManager : MonoBehaviour
@@ -52,7 +52,8 @@ namespace Lunarsoft
             if (instance == null)
             {
                 instance = this;
-                LoadData(); 
+                LoadData();
+                //ClearData();
                 DontDestroyOnLoad(gameObject);
             }
             else if (instance != this)
@@ -154,6 +155,37 @@ namespace Lunarsoft
             }
         }
 
+        public void ClearData()
+        {
+            // Reset variables to default values
+            score = 0;
+            gold = 0;
+            kills = 0;
+            deaths = 0;
+            foundShovel = 0;
+            currentProgress = HerosJourneyStep.OrdinaryWorld;
+            stats = new CharacterStats(); // Assuming CharacterStats has a default constructor
+
+            // Update UI
+            UpdateScoreText();
+
+            // Clear data from PlayerPrefs
+            PlayerPrefs.DeleteKey("Kills");
+            PlayerPrefs.DeleteKey("Deaths");
+            PlayerPrefs.DeleteKey("Score");
+            PlayerPrefs.DeleteKey("Gold");
+            PlayerPrefs.DeleteKey("FoundShovel");
+            PlayerPrefs.DeleteKey("CharacterStats");
+            PlayerPrefs.DeleteKey("CurrentProgress");
+
+            // Save changes to PlayerPrefs
+            PlayerPrefs.Save();
+
+            // Optionally, respawn the player at the starting checkpoint
+            SpawnAtCurrentCheckPoint();
+        }
+
+
         public void SaveData()
         {
             PlayerPrefs.SetInt("Kills", kills);
@@ -162,9 +194,8 @@ namespace Lunarsoft
             PlayerPrefs.SetInt("Gold", gold);
             PlayerPrefs.SetInt("FoundShovel", foundShovel);
 
-            
-            string statsJson = JsonUtility.ToJson(stats);
-            PlayerPrefs.SetString("CharacterStats", statsJson);
+            //string statsJson = JsonUtility.ToJson(stats);
+            //PlayerPrefs.SetString("CharacterStats", statsJson);
             PlayerPrefs.SetInt("CurrentProgress", (int)currentProgress);
 
             PlayerPrefs.Save();
@@ -184,11 +215,11 @@ namespace Lunarsoft
             Debug.Log("deaths: " + deaths.ToString());
             Debug.Log("foundShovel: " + foundShovel.ToString());
 
-            string statsJson = PlayerPrefs.GetString("CharacterStats", "");
-            if (!string.IsNullOrEmpty(statsJson))
-            {
-                stats = JsonUtility.FromJson<CharacterStats>(statsJson);
-            }
+            //string statsJson = PlayerPrefs.GetString("CharacterStats", "");
+            //if (!string.IsNullOrEmpty(statsJson))
+            //{
+            //    stats = JsonUtility.FromJson<CharacterStats>(statsJson);
+            //}
 
             currentProgress = (HerosJourneyStep)PlayerPrefs.GetInt("CurrentProgress", 0);
 

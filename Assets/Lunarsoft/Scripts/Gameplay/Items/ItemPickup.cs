@@ -8,7 +8,7 @@ namespace Lunarsoft
     {
         public string playerTag = "Player";
 
-        private void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(playerTag))
             {
@@ -17,18 +17,14 @@ namespace Lunarsoft
             }
         }
 
-        private void Update()
+        protected virtual void Update()
         {
-            if(ScoreManager.instance.foundShovel > 0)
-            {
-                Destroy(gameObject);
-            }
+           
         }
 
-        private void PickupItem()
+        protected virtual void PickupItem()
         {
             Debug.Log("Item picked up!");
-            ScoreManager.instance.PickedUpMagicShovel();
         }
     }
 }
