@@ -33,7 +33,6 @@ namespace Lunarsoft
         public float currentHealth = 0;
         public float currentSpeed = 0;
 
-
         virtual protected void Awake() { }
 
         virtual protected void Start()
@@ -42,13 +41,11 @@ namespace Lunarsoft
             originalScale = transform.localScale;
             rb = GetComponent<Rigidbody2D>();
 
-
             if (characterStats != null)
             {
                 maxHealth = currentHealth = characterStats.Health.GetValueAtLevel(characterStats.level);
                 currentSpeed = characterStats.Speed.GetValueAtLevel(characterStats.level);
             }
-
         }
 
         abstract protected void Update();
@@ -102,7 +99,6 @@ namespace Lunarsoft
         public virtual void ApplyKnockback(Vector2 direction, float force, float duration = 0.5f)
         {
             CinemachineShake.Instance.ShakeCamera(5f, .1f);
-
 
             Vector3 knockbackForce = direction.normalized * force;
             Vector3 targetPosition = transform.position + knockbackForce;
@@ -168,9 +164,7 @@ namespace Lunarsoft
             transform.position = targetPosition;
         }
 
-
         abstract public void TakeDamage(float damage, string animationTrigger = "Hit");
         abstract public void Die();
-
     }
 }

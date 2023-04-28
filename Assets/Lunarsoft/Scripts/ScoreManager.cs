@@ -42,6 +42,7 @@ namespace Lunarsoft
 
         private int kills = 0;
         private int deaths = 0;
+        public int foundShovel = 0;
 
         public HerosJourneyStep currentProgress;
         public CheckPoint currentCheckPoint;
@@ -89,7 +90,17 @@ namespace Lunarsoft
                     Debug.Log("Found matching CheckPoint with herosJourneyStep: " + currentProgress);
                     GameObject player = currentCheckPoint.SpawnPlayer();
                     playerController = player.GetComponent<PlayerController>();
-                    
+                    if(foundShovel > 0)
+                    {
+                        playerController.magicShovel.SetActive(true);
+                        playerController.GetComponent<LightAttackAction>().enabled = true;
+                    }
+                    else
+                    {
+                        playerController.magicShovel.SetActive(false);
+                        playerController.GetComponent<LightAttackAction>().enabled = false;
+                    }
+
                     break;
                 }
             }
@@ -104,6 +115,17 @@ namespace Lunarsoft
         {
             Debug.Log("Checkoint reached " + step);
             currentProgress = step;
+            SaveData();
+        }
+
+
+        public void PickedUpMagicShovel()
+        {
+            Debug.Log("PickedUpMagicShovel");
+            foundShovel = 1;
+            playerController.magicShovel.SetActive(true);
+            playerController.GetComponent<LightAttackAction>().enabled = true;
+
             SaveData();
         }
 
@@ -138,6 +160,9 @@ namespace Lunarsoft
             PlayerPrefs.SetInt("Deaths", deaths);
             PlayerPrefs.SetInt("Score", score);
             PlayerPrefs.SetInt("Gold", gold);
+            PlayerPrefs.SetInt("FoundShovel", foundShovel);
+
+            
             string statsJson = JsonUtility.ToJson(stats);
             PlayerPrefs.SetString("CharacterStats", statsJson);
             PlayerPrefs.SetInt("CurrentProgress", (int)currentProgress);
@@ -151,11 +176,13 @@ namespace Lunarsoft
             gold = PlayerPrefs.GetInt("Gold", 0);
             kills = PlayerPrefs.GetInt("Kills", 0); 
             deaths = PlayerPrefs.GetInt("Deaths", 0);
+            foundShovel = PlayerPrefs.GetInt("FoundShovel", 0);
 
             Debug.Log("Score: " + score.ToString());
             Debug.Log("gold: " + gold.ToString());
             Debug.Log("kills: " + kills.ToString());
             Debug.Log("deaths: " + deaths.ToString());
+            Debug.Log("foundShovel: " + foundShovel.ToString());
 
             string statsJson = PlayerPrefs.GetString("CharacterStats", "");
             if (!string.IsNullOrEmpty(statsJson))

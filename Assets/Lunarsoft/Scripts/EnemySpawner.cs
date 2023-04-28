@@ -51,7 +51,7 @@ namespace Lunarsoft
         private void OnEnemyDeath(GameObject deadEnemy)
         {
             spawnedEnemies.Remove(deadEnemy);
-
+            ScoreManager.instance.AddKill();
             if (spawnedEnemies.Count < maxSpawnedEnemies)
             {
                 SpawnEnemy();

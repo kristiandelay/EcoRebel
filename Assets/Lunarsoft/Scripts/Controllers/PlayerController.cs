@@ -17,9 +17,9 @@ namespace Lunarsoft
         public CinemachineVirtualCamera virtualCamera;
         public Camera cam;
 
-
-
         private BaseApi _baseApi;
+
+        public GameObject magicShovel;
 
         protected override void Awake()
         {
@@ -32,14 +32,11 @@ namespace Lunarsoft
             bounds = FindAnyObjectByType<LevelBounds>()?.GetComponent<PolygonCollider2D>();
 
             _baseApi = GetComponent<BaseApi>();
-            if (_baseApi != null)
-            {
-                StartCoroutine(PerformGetRandomUserApiCalls());
-            }
-
+            //if (_baseApi != null)
+            //{
+            //    StartCoroutine(PerformGetRandomUserApiCalls());
+            //}
         }
-
-
 
         private IEnumerator PerformGetRandomUserApiCalls()
         {
@@ -64,7 +61,6 @@ namespace Lunarsoft
             });
         }
 
-
         protected override void Update()
         {
         }
@@ -74,24 +70,20 @@ namespace Lunarsoft
             base.Move(direction);
         }
 
-        // Override the TakeDamage function to use the character's health stat
         public override void TakeDamage(float damage, string animationTrigger = "Hit")
         {
             currentHealth -= damage;
 
-            // Play any damage taken animations or sounds here
             animator.SetTrigger(animationTrigger);
 
             if (currentHealth <= 0)
             {
-                // Handle character death
                 Die();
             }
         }
 
         public override void Die()
         {
-            // Implement your die logic here
             Debug.Log("You Dead af my guy");
             ScoreManager.instance.AddDeath();
         }

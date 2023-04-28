@@ -14,13 +14,13 @@ namespace Lunarsoft
         private int currentPatrolIndex;
         private bool reversePatrol;
 
-        private enum AIState
+        private enum eAIState
         {
             Patrol,
             Chase
         }
 
-        private AIState currentState;
+        private eAIState currentAIState;
 
         protected override void Awake()
         {
@@ -28,26 +28,26 @@ namespace Lunarsoft
             player = GameObject.FindGameObjectWithTag("Player").transform;
             currentPatrolIndex = 0;
             reversePatrol = false;
-            currentState = AIState.Patrol;
+            currentAIState = eAIState.Patrol;
         }
 
         protected override void Update()
         {
             if (Vector3.Distance(transform.position, player.position) <= detectionRadius)
             {
-                currentState = AIState.Chase;
+                currentAIState = eAIState.Chase;
             }
-            else if (currentState == AIState.Chase)
+            else if (currentAIState == eAIState.Chase)
             {
-                currentState = AIState.Patrol;
+                currentAIState = eAIState.Patrol;
             }
 
-            switch (currentState)
+            switch (currentAIState)
             {
-                case AIState.Chase:
+                case eAIState.Chase:
                     ChasePlayer();
                     break;
-                case AIState.Patrol:
+                case eAIState.Patrol:
                     Patrol();
                     break;
             }
