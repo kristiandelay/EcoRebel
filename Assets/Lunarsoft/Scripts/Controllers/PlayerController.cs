@@ -6,87 +6,94 @@ using Newtonsoft.Json.Linq;
 using System.Collections;
 using System;
 
-public class PlayerController : BaseController
+namespace Lunarsoft
 {
-    // The Rewired player id of this character
-    public int playerId = 0;
 
-    public CinemachineVirtualCamera virtualCamera;
-    public Camera cam;
-    
-
-
-    private BaseApi _baseApi;
-
-    protected override void Awake()
+    public class PlayerController : BaseController
     {
-        // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
-        base.Awake();
-        virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
-        cam = FindObjectOfType<Camera>();
+        // The Rewired player id of this character
+        public int playerId = 0;
+
+        public CinemachineVirtualCamera virtualCamera;
+        public Camera cam;
 
 
-        bounds = FindAnyObjectByType<LevelBounds>()?.GetComponent<PolygonCollider2D>();
 
-        _baseApi = GetComponent<BaseApi>();
-        if (_baseApi != null)
+        private BaseApi _baseApi;
+
+        protected override void Awake()
         {
-            StartCoroutine(PerformGetRandomUserApiCalls());
+            // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
+            base.Awake();
+            virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+            cam = FindObjectOfType<Camera>();
+
+
+            bounds = FindAnyObjectByType<LevelBounds>()?.GetComponent<PolygonCollider2D>();
+
+            _baseApi = GetComponent<BaseApi>();
+            if (_baseApi != null)
+            {
+                StartCoroutine(PerformGetRandomUserApiCalls());
+            }
+
         }
 
-    }
-
-   
-
-    private IEnumerator PerformGetRandomUserApiCalls()
-    {
-        // GET request example
-        string getEndpoint = "/";
-        _baseApi.baseUrl = "https://randomuser.me/api";
-        yield return _baseApi.Get(getEndpoint, response => {
-            Debug.Log("GET Response: " + response);
-            try
-            {
-                RandomUserApiResponse randomUserApiResponse = JsonUtility.FromJson<RandomUserApiResponse>(response);
-                Debug.Log("Deserialized user's email: " + randomUserApiResponse.results[0].email);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError("Deserialization Error: " + ex.Message);
-            }
-        }, error => {
-            Debug.LogError("GET Error: " + error);
-        });
-    }
 
 
-    protected override void Update()
-    { 
-    }
-
-    public override void Move(Vector2 direction)
-    {
-        base.Move(direction);
-    }
-
-    // Override the TakeDamage function to use the character's health stat
-    public override void TakeDamage(float damage, string animationTrigger = "Hit")
-    {
-        currentHealth -= damage;
-
-        // Play any damage taken animations or sounds here
-        animator.SetTrigger(animationTrigger);
-
-        if (currentHealth <= 0)
+        private IEnumerator PerformGetRandomUserApiCalls()
         {
-            // Handle character death
-            Die();
+            // GET request example
+            string getEndpoint = "/";
+            _baseApi.baseUrl = "https://randomuser.me/api";
+            yield return _baseApi.Get(getEndpoint, response =>
+            {
+                Debug.Log("GET Response: " + response);
+                try
+                {
+                    RandomUserApiResponse randomUserApiResponse = JsonUtility.FromJson<RandomUserApiResponse>(response);
+                    Debug.Log("Deserialized user's email: " + randomUserApiResponse.results[0].email);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError("Deserialization Error: " + ex.Message);
+                }
+            }, error =>
+            {
+                Debug.LogError("GET Error: " + error);
+            });
         }
-    }
 
-    public override void Die()
-    {
-        // Implement your die logic here
-        Debug.Log("You Dead af my guy");
+
+        protected override void Update()
+        {
+        }
+
+        public override void Move(Vector2 direction)
+        {
+            base.Move(direction);
+        }
+
+        // Override the TakeDamage function to use the character's health stat
+        public override void TakeDamage(float damage, string animationTrigger = "Hit")
+        {
+            currentHealth -= damage;
+
+            // Play any damage taken animations or sounds here
+            animator.SetTrigger(animationTrigger);
+
+            if (currentHealth <= 0)
+            {
+                // Handle character death
+                Die();
+            }
+        }
+
+        public override void Die()
+        {
+            // Implement your die logic here
+            Debug.Log("You Dead af my guy");
+            ScoreManager.instance.AddDeath();
+        }
     }
 }

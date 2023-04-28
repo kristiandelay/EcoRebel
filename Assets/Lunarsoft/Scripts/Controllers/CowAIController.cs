@@ -26,12 +26,12 @@ namespace Lunarsoft
 
         public override void Die()
         {
-
+            base.Die();
         }
 
         public override void TakeDamage(float damage, string animationTrigger = "Hit")
         {
-            animator.SetTrigger(animationTrigger);
+            base.TakeDamage(damage, animationTrigger);
         }
 
         protected override void Start()
@@ -42,6 +42,10 @@ namespace Lunarsoft
         protected override void Update()
         {
             currentState?.UpdateState();
+            if (currentHealth < 0)
+            {
+                Die();
+            }
         }
     }
 }

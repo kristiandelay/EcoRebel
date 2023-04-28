@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Lunarsoft
 {
@@ -10,11 +11,42 @@ namespace Lunarsoft
         public int score = 0;
         public Text scoreText;
 
+        public int gold = 0;
+        public CharacterStats stats;
+
+        private int kills = 0;
+        private int deaths = 0;
+
+        public enum HerosJourneyStep
+        {
+            // Departure (Separation)
+            OrdinaryWorld,
+            CallToAdventure,
+            RefusalOfTheCall,
+            MeetingTheMentor,
+            CrossingTheThreshold,
+
+            // Initiation
+            TestsAlliesEnemies,
+            ApproachToTheInmostCave,
+            TheOrdeal,
+            RewardSeizingTheSword,
+
+            // Return
+            TheRoadBack,
+            Resurrection,
+            ReturnWithTheElixir
+        }
+
+        public HerosJourneyStep currentProgress;
+
         private void Awake()
         {
             if (instance == null)
             {
                 instance = this;
+                LoadData(); 
+                DontDestroyOnLoad(gameObject);
             }
             else if (instance != this)
             {
@@ -25,6 +57,17 @@ namespace Lunarsoft
         private void Start()
         {
             UpdateScoreText();
+            StartCoroutine(SaveDataCoroutine()); // Start the coroutine to save data every 10 seconds
+        }
+
+        public void AddKill()
+        {
+            kills++;
+        }
+
+        public void AddDeath()
+        {
+            deaths++;
         }
 
         public void AddPoints(int pointsToAdd)
@@ -40,6 +83,59 @@ namespace Lunarsoft
             {
                 scoreText.text = "Score: " + score.ToString();
             }
+        }
+
+        public void SaveData()
+        {
+            PlayerPrefs.SetInt("Kills", kills);
+            PlayerPrefs.SetInt("Deaths", deaths);
+            PlayerPrefs.SetInt("Score", score);
+            PlayerPrefs.SetInt("Gold", gold);
+            string statsJson = JsonUtility.ToJson(stats);
+            PlayerPrefs.SetString("CharacterStats", statsJson);
+            PlayerPrefs.SetInt("CurrentProgress", (int)currentProgress);
+
+            PlayerPrefs.Save();
+        }
+
+        public void LoadData()
+        {
+            score = PlayerPrefs.GetInt("Score", 0);
+            gold = PlayerPrefs.GetInt("Gold", 0);
+            kills = PlayerPrefs.GetInt("Kills", 0); 
+            deaths = PlayerPrefs.GetInt("Deaths", 0);
+
+            Debug.Log("Score: " + score.ToString());
+            Debug.Log("gold: " + gold.ToString());
+            Debug.Log("kills: " + kills.ToString());
+            Debug.Log("deaths: " + deaths.ToString());
+
+            string statsJson = PlayerPrefs.GetString("CharacterStats", "");
+            if (!string.IsNullOrEmpty(statsJson))
+            {
+                stats = JsonUtility.FromJson<CharacterStats>(statsJson);
+            }
+
+            currentProgress = (HerosJourneyStep)PlayerPrefs.GetInt("CurrentProgress", 0);
+        }
+
+        private IEnumerator SaveDataCoroutine()
+        {
+            while (true)
+            {
+                SaveData();
+                yield return new WaitForSeconds(10f); // Wait for 10 seconds before saving again
+            }
+        }
+
+        private void OnApplicationQuit()
+        {
+            SaveData();
+        }
+
+        private void OnDisable()
+        {
+            SaveData();
         }
     }
 }

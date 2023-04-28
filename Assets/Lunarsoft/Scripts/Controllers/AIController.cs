@@ -41,10 +41,6 @@ namespace Lunarsoft
             currentState?.EnterState();
         }
 
-        public override void TakeDamage(float damage, string animationTrigger = "Hit")
-        {
-            animator.SetTrigger(animationTrigger);
-        }
 
         protected override void Start()
         {
@@ -61,10 +57,26 @@ namespace Lunarsoft
             }
         }
 
+        public override void TakeDamage(float damage, string animationTrigger = "Hit")
+        {
+            currentHealth -= damage;
+
+            // Play any damage taken animations or sounds here
+            animator.SetTrigger(animationTrigger);
+
+            if (currentHealth <= 0)
+            {
+                // Handle character death
+                Die();
+            }
+        }
+
         public override void Die()
         {
             OnEnemyDeath?.Invoke(gameObject);
-            Destroy(gameObject);
+            ScoreManager.instance.AddKill();
+
+            Destroy(gameObject, .2f);
         }
 
       
