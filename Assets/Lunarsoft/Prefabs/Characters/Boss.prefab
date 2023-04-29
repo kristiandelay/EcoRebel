@@ -78,7 +78,7 @@ Animator:
   m_GameObject: {fileID: 418734252304380372}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b90f9b41381974192971778db0a338ef, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -208,6 +208,8 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   currentSpeed: 0
+  useKnockback: 1
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!114 &5623741723461883810

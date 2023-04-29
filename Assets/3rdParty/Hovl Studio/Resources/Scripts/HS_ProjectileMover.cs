@@ -15,6 +15,8 @@ public class HS_ProjectileMover : MonoBehaviour
     public GameObject[] Detached;
     public AudioClip[] hitSfx;
 
+    public float damage = 30;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -108,6 +110,12 @@ public class HS_ProjectileMover : MonoBehaviour
 
                 // Destroy the new GameObject after the audio clip finishes playing
                 Destroy(audioSourceObject, audioSource.clip.length);
+            }
+
+            AIController aIController = other.GetComponent<AIController>();
+            if (aIController != null)
+            {
+                aIController.TakeDamage(damage);
             }
 
             //Removing trail from the projectile on cillision enter or smooth removing. Detached elements must have "AutoDestroying script"

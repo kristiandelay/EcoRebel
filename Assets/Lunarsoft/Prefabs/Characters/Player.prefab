@@ -1899,9 +1899,10 @@ MonoBehaviour:
   controller: {fileID: 0}
   magicBoltPrefab: {fileID: 1595252117517162, guid: e7776336bc56a9b4caa1c90ea92ff765, type: 3}
   firePoint: {fileID: 682170386}
+  damage: 30
   fireRate: 10
   boltSpeed: 50
-  destroyAfter: 5
+  destroyAfter: 8
   magicspawnVFX:
   - {fileID: 1024167407391004, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
   magicSpawnSound: []
@@ -1923,7 +1924,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 640
   attackPoint: {fileID: 682170386}
-  attackCooldown: 1
+  attackCooldown: 1.6
   hitEffectPrefab: {fileID: 0}
   attackSounds:
   - {fileID: 8300000, guid: 96e724471f919460aaec961d9067105b, type: 3}
@@ -2046,6 +2047,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 1
+  isDead: 0
   playerId: 0
   virtualCamera: {fileID: 0}
   cam: {fileID: 0}

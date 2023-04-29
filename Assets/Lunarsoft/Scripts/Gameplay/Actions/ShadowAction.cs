@@ -13,6 +13,7 @@ namespace Lunarsoft
         public float yOffset;
 
         [SerializeField] public GameObject shadowPrefab;
+        private GameObject instantiatedShadowObject;
 
         private JumpAction jumpAction;
 
@@ -22,8 +23,8 @@ namespace Lunarsoft
             base.Start();
 
             // Instantiate the shadow object without setting it as a child of the player
-            GameObject shadowObject = Instantiate(shadowPrefab, transform.position + shadowOffset, Quaternion.identity);
-            shadowTransform = shadowObject.transform;
+            instantiatedShadowObject = Instantiate(shadowPrefab, transform.position + shadowOffset, Quaternion.identity);
+            shadowTransform = instantiatedShadowObject.transform;
             yOffset = Mathf.Abs(transform.position.y - shadowTransform.position.y);
 
             jumpAction = controller.GetComponent<JumpAction>();
@@ -46,6 +47,10 @@ namespace Lunarsoft
             }
         }
 
+        private void OnDestroy()
+        {
+            Destroy(instantiatedShadowObject);
+        }
     }
 
 }

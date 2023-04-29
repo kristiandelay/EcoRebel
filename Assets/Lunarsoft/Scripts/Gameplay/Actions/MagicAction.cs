@@ -8,6 +8,7 @@ namespace Lunarsoft
     {
         [SerializeField] private GameObject magicBoltPrefab;
         [SerializeField] private Transform firePoint;
+        [SerializeField] public float damage = 30f;
         [SerializeField] private float fireRate = 1f;
         [SerializeField] private float boltSpeed = 50f;
         [SerializeField] private float destroyAfter = 5f;
