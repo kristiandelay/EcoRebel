@@ -34,6 +34,7 @@ namespace Lunarsoft
         public float currentSpeed = 0;
 
         public bool useKnockback = true;
+        public bool isDead = false;
 
         virtual protected void Awake() { }
 

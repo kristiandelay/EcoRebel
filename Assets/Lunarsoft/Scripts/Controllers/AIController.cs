@@ -51,7 +51,7 @@ namespace Lunarsoft
         {
             currentState?.UpdateState();
 
-            if(currentHealth < 0)
+            if(isDead == false && currentHealth < 0)
             {
                 Die();
             }
@@ -75,7 +75,7 @@ namespace Lunarsoft
         {
             OnEnemyDeath?.Invoke(gameObject);
             ScoreManager.instance.AddKill();
-
+            isDead = true;
             Destroy(gameObject, .2f);
         }
 

@@ -162,6 +162,8 @@ namespace Lunarsoft
 
         public void AddRemovedBarrel()
         {
+            Debug.Log("calling AddRemovedBarrel mfer");
+
             toxicBarrlesRemoved++;
             SaveData();
         }

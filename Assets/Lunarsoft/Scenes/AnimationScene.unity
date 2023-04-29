@@ -1399,6 +1399,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 0
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!1 &28893357
@@ -11959,6 +11960,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 0
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!95 &407734366
@@ -13561,6 +13563,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 0
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!1 &452332962
@@ -16052,6 +16055,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 0
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!1 &619894052
@@ -17476,6 +17480,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 1
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!114 &659387538
@@ -20460,6 +20465,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 1
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!114 &830814970
@@ -22157,6 +22163,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 0
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!1001 &881003360
@@ -23152,6 +23159,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 1
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!114 &897991742
@@ -27767,6 +27775,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 0
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!61 &1101029797
@@ -35254,6 +35263,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 1
+  isDead: 0
   playerId: 0
   virtualCamera: {fileID: 0}
   cam: {fileID: 0}
@@ -37856,6 +37866,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 1
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!114 &1610071530
@@ -39148,6 +39159,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 1
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!114 &1691005671
@@ -40110,6 +40122,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 1
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!114 &1727062064
@@ -40943,6 +40956,7 @@ MonoBehaviour:
   currentHealth: 0
   currentSpeed: 0
   useKnockback: 1
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
 --- !u!114 &1769911472
