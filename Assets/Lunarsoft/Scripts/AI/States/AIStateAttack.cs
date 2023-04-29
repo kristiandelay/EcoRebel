@@ -6,7 +6,7 @@ namespace Lunarsoft
 {
     public class AIStateAttack : AIStateBase
     {
-        protected FollowTarget followTarget;
+        public FollowTarget followTarget;
         protected LightAttackAction action;
 
         protected override void OnEnterState()
@@ -27,7 +27,7 @@ namespace Lunarsoft
 
         protected override void OnUpdateState()
         {
-            if (followTarget.target != null && followTarget.distanceFromTarget > agent.stoppingDistance)
+            if (followTarget.target != null || followTarget.distanceFromTarget > agent.stoppingDistance)
             {
                 controller.SetState<AIStatePatrol>();
             }

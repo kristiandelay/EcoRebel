@@ -86,6 +86,8 @@ namespace Lunarsoft
         {
             Debug.Log("You Dead af my guy");
             ScoreManager.instance.AddDeath();
+            ScoreManager.instance.SpawnAtCurrentCheckPoint();
+            Destroy(gameObject);
         }
     }
 }

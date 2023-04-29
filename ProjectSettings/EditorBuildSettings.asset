@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Lunarsoft/Scenes/CowLevel.unity
     guid: dfa86d9e104914f2b8aa6f100ecc00f6
+  - enabled: 1
+    path: Assets/Lunarsoft/Scenes/Sewer.unity
+    guid: 608fe58a575ba466d9bf9ee8e375e4ec
+  - enabled: 1
+    path: Assets/Lunarsoft/Scenes/OfficeHalls.unity
+    guid: 1d84457d46b194ecf85acc254e84cf7a
+  - enabled: 1
+    path: Assets/Lunarsoft/Scenes/BossRoom.unity
+    guid: 7d0b9ab9c40aa486cbdb6ce4e786eb0f
   m_configObjects: {}

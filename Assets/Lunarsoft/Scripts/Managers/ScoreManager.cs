@@ -27,6 +27,8 @@ namespace Lunarsoft
 
         // Other World Checkpoints
         CowExit,
+        SewerPipeEntrence,
+        SewerPipeExit,
     }
 
     public class ScoreManager : MonoBehaviour

@@ -235,7 +235,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   spawnLocation: {fileID: 482821452}
   playerPrefab: {fileID: 9012603635936798991, guid: 6faf6385957504eb6973bfef4c804067, type: 3}
+  virtualCamera: {fileID: 0}
   herosJourneyStep: 1
+  sceneToLoad: 
 --- !u!1 &2325728315408992895
 GameObject:
   m_ObjectHideFlags: 0
