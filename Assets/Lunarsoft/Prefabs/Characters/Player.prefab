@@ -1921,7 +1921,7 @@ MonoBehaviour:
   attackRange: 12.34
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   attackPoint: {fileID: 682170386}
   attackCooldown: 1
   hitEffectPrefab: {fileID: 0}
@@ -2045,6 +2045,7 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   currentSpeed: 0
+  useKnockback: 1
   playerId: 0
   virtualCamera: {fileID: 0}
   cam: {fileID: 0}

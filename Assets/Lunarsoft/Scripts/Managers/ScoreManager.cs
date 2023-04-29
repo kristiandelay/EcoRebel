@@ -45,6 +45,7 @@ namespace Lunarsoft
 
         private int kills = 0;
         private int deaths = 0;
+        private int toxicBarrlesRemoved = 0;
         public int foundShovel = 0;
 
         public HerosJourneyStep currentProgress;
@@ -150,11 +151,19 @@ namespace Lunarsoft
         public void AddKill()
         {
             kills++;
+            SaveData();
         }
 
         public void AddDeath()
         {
             deaths++;
+            SaveData();
+        }
+
+        public void AddRemovedBarrel()
+        {
+            toxicBarrlesRemoved++;
+            SaveData();
         }
 
         public void AddPoints(int pointsToAdd)
@@ -180,6 +189,7 @@ namespace Lunarsoft
             kills = 0;
             deaths = 0;
             foundShovel = 0;
+            toxicBarrlesRemoved = 0;
             currentProgress = HerosJourneyStep.OrdinaryWorld;
             stats = new CharacterStats(); // Assuming CharacterStats has a default constructor
 
@@ -190,6 +200,7 @@ namespace Lunarsoft
             PlayerPrefs.DeleteKey("Kills");
             PlayerPrefs.DeleteKey("Deaths");
             PlayerPrefs.DeleteKey("Score");
+            PlayerPrefs.DeleteKey("toxicBarrlesRemoved");
             PlayerPrefs.DeleteKey("Gold");
             PlayerPrefs.DeleteKey("FoundShovel");
             PlayerPrefs.DeleteKey("CharacterStats");
@@ -207,6 +218,8 @@ namespace Lunarsoft
         {
             PlayerPrefs.SetInt("Kills", kills);
             PlayerPrefs.SetInt("Deaths", deaths);
+            PlayerPrefs.SetInt("ToxicBarrlesRemoved", toxicBarrlesRemoved);
+            
             PlayerPrefs.SetInt("Score", score);
             PlayerPrefs.SetInt("Gold", gold);
             PlayerPrefs.SetInt("FoundShovel", foundShovel);
@@ -224,12 +237,15 @@ namespace Lunarsoft
             gold = PlayerPrefs.GetInt("Gold", 0);
             kills = PlayerPrefs.GetInt("Kills", 0); 
             deaths = PlayerPrefs.GetInt("Deaths", 0);
+            toxicBarrlesRemoved = PlayerPrefs.GetInt("ToxicBarrlesRemoved", 0);
+            
             foundShovel = PlayerPrefs.GetInt("FoundShovel", 0);
 
             Debug.Log("Score: " + score.ToString());
             Debug.Log("gold: " + gold.ToString());
             Debug.Log("kills: " + kills.ToString());
             Debug.Log("deaths: " + deaths.ToString());
+            Debug.Log("toxicBarrlesRemoved: " + toxicBarrlesRemoved.ToString());
             Debug.Log("foundShovel: " + foundShovel.ToString());
 
             //string statsJson = PlayerPrefs.GetString("CharacterStats", "");

@@ -33,6 +33,8 @@ namespace Lunarsoft
         public float currentHealth = 0;
         public float currentSpeed = 0;
 
+        public bool useKnockback = true;
+
         virtual protected void Awake() { }
 
         virtual protected void Start()
@@ -98,8 +100,13 @@ namespace Lunarsoft
 
         public virtual void ApplyKnockback(Vector2 direction, float force, float duration = 0.5f)
         {
+
             CinemachineShake.Instance.ShakeCamera(5f, .1f);
 
+            if(useKnockback == false)
+            {
+                return;
+            }
             Vector3 knockbackForce = direction.normalized * force;
             Vector3 targetPosition = transform.position + knockbackForce;
 
