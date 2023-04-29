@@ -18,6 +18,10 @@ namespace Lunarsoft
 
         protected override void OnUpdateState()
         {
+            if(followTarget.target == null && findClosestEnemy.closestEnemy != null )
+            {
+                followTarget.target = findClosestEnemy.closestEnemy.transform;
+            }
             if (followTarget.target != null && followTarget.distanceFromTarget > 0 && followTarget.distanceFromTarget < agent.stoppingDistance)
             {
                 controller.SetState<AIStateAttack>();

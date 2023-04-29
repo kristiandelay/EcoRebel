@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Lunarsoft
 {
@@ -84,9 +85,10 @@ namespace Lunarsoft
         public void SpawnAtCurrentCheckPoint()
         {
             CheckPoint[] checkPoints = FindObjectsOfType<CheckPoint>();
-
+            CheckPoint lastcheckedCheckPoint = null ;
             foreach (CheckPoint checkPoint in checkPoints)
             {
+                lastcheckedCheckPoint = checkPoint;
                 if (checkPoint.herosJourneyStep == currentProgress)
                 {
                     currentCheckPoint = checkPoint;
@@ -110,6 +112,17 @@ namespace Lunarsoft
 
             if (currentCheckPoint == null)
             {
+                if(currentProgress == HerosJourneyStep.CowExit)
+                {
+                    SceneManager.LoadScene(1);
+                }
+                else
+                {
+                    Debug.Log("lastcheckedCheckPoint.herosJourneyStep: " + lastcheckedCheckPoint.herosJourneyStep);
+                    UpdateProgress(lastcheckedCheckPoint.herosJourneyStep);
+                    Debug.Log("No matching CheckPoint found for herosJourneyStep: " + currentProgress);
+
+                }
                 Debug.Log("No matching CheckPoint found for herosJourneyStep: " + currentProgress);
             }
         }
@@ -131,6 +144,8 @@ namespace Lunarsoft
 
             SaveData();
         }
+
+
 
         public void AddKill()
         {
