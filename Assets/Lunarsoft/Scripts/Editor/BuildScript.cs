@@ -27,7 +27,7 @@ public class BuildScript
     public static void BuildWindowsProject()
     {
         // Define the name of the build
-        string buildName = "EcoRebel";
+        string buildName = "EcoRebel.exe";
 
         // Define the output directory for the build
         string outputPath = Path.Combine("Builds/Windows64", buildName);

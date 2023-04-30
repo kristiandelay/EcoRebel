@@ -26,26 +26,43 @@ LAST_COMMIT_AUTHOR=$(git log -1 --pretty=format:"%an")
 # Construct the URL to the GitHub commit
 GITHUB_COMMIT_URL="https://github.com/$GITHUB_OWNER_AND_REPO/commit/$LAST_COMMIT_HASH"
 
+# Check if an argument was provided
+if [ -z "$1" ]; then
+  # Prompt the user to choose the build target
+  echo "Please choose the build target:"
+  echo "1. Windows"
+  echo "2. Mac"
+  read -p "Enter your choice (1 or 2): " choice
+
+  # Set the build method based on the user's choice
+  if [ "$choice" == "1" ]; then
+    BUILD_METHOD="BuildScript.BuildWindowsProject"
+    BUILD_TARGET_NAME="Windows"
+  elif [ "$choice" == "2" ]; then
+    BUILD_METHOD="BuildScript.BuildMacProject"
+    BUILD_TARGET_NAME="Mac"
+  else
+    echo "Invalid choice. Exiting."
+    exit 1
+  fi
+else
+  # Set the build method based on the command-line argument
+  if [ "$1" == "windows" ]; then
+    BUILD_METHOD="BuildScript.BuildWindowsProject"
+    BUILD_TARGET_NAME="Windows"
+  elif [ "$1" == "mac" ]; then
+    BUILD_METHOD="BuildScript.BuildMacProject"
+    BUILD_TARGET_NAME="Mac"
+  else
+    echo "Invalid argument. Please specify 'windows' or 'mac'."
+    exit 1
+  fi
+fi
+
 # Send the last Git commit information to Discord
 curl -X POST -H "Content-Type: application/json" \
-  -d "{\"content\":\"Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
+  -d "{\"content\":\"Starting Unity build for $BUILD_TARGET_NAME. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
   "$DISCORD_WEBHOOK_URL"
-
-  # Prompt the user to choose the build target
-echo "Please choose the build target:"
-echo "1. Windows"
-echo "2. Mac"
-read -p "Enter your choice (1 or 2): " choice
-
-# Set the build method and run the Unity build command based on the user's choice
-if [ "$choice" == "1" ]; then
-  BUILD_METHOD="BuildScript.BuildWindowsProject"
-elif [ "$choice" == "2" ]; then
-  BUILD_METHOD="BuildScript.BuildMacProject"
-else
-  echo "Invalid choice. Exiting."
-  exit 1
-fi
 
 # Run the Unity build command with the chosen build method
 "$UNITY_PATH" -batchmode -nographics -silent-crashes -quit \
@@ -56,11 +73,11 @@ fi
 if [ $? -eq 0 ]; then
   # Send a success message to Discord, including the last Git commit information
   curl -X POST -H "Content-Type: application/json" \
-    -d "{\"content\":\"Unity build completed successfully. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
+    -d "{\"content\":\"Unity build for $BUILD_TARGET_NAME completed successfully. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
     "$DISCORD_WEBHOOK_URL"
 else
   # Send a failure message to Discord, including the last Git commit information
   curl -X POST -H "Content-Type: application/json" \
-    -d "{\"content\":\"Unity build failed. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
+    -d "{\"content\":\"Unity build for $BUILD_TARGET_NAME failed. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
     "$DISCORD_WEBHOOK_URL"
 fi
