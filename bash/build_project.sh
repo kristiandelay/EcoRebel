@@ -31,10 +31,26 @@ curl -X POST -H "Content-Type: application/json" \
   -d "{\"content\":\"Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
   "$DISCORD_WEBHOOK_URL"
 
-# Run the Unity build command
+  # Prompt the user to choose the build target
+echo "Please choose the build target:"
+echo "1. Windows"
+echo "2. Mac"
+read -p "Enter your choice (1 or 2): " choice
+
+# Set the build method and run the Unity build command based on the user's choice
+if [ "$choice" == "1" ]; then
+  BUILD_METHOD="BuildScript.BuildWindowsProject"
+elif [ "$choice" == "2" ]; then
+  BUILD_METHOD="BuildScript.BuildMacProject"
+else
+  echo "Invalid choice. Exiting."
+  exit 1
+fi
+
+# Run the Unity build command with the chosen build method
 "$UNITY_PATH" -batchmode -nographics -silent-crashes -quit \
   -projectPath "$PROJECT_PATH" \
-  -executeMethod BuildScript.BuildProject
+  -executeMethod "$BUILD_METHOD"
 
 # Check the exit code to see if the build was successful
 if [ $? -eq 0 ]; then
