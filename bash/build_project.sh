@@ -38,6 +38,8 @@ if [ -z "$1" ]; then
   if [ "$choice" == "1" ]; then
     BUILD_METHOD="BuildScript.BuildWindowsProject"
     BUILD_TARGET_NAME="Windows"
+    UNITY_PATH="C:\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Unity.exe"
+    PROJECT_PATH="L:\Lunarsoft\Unity\EcoRebel"
   elif [ "$choice" == "2" ]; then
     BUILD_METHOD="BuildScript.BuildMacProject"
     BUILD_TARGET_NAME="Mac"
@@ -50,6 +52,8 @@ else
   if [ "$1" == "windows" ]; then
     BUILD_METHOD="BuildScript.BuildWindowsProject"
     BUILD_TARGET_NAME="Windows"
+    UNITY_PATH="C:\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Unity.exe"
+    PROJECT_PATH="L:\Lunarsoft\Unity\EcoRebel"
   elif [ "$1" == "mac" ]; then
     BUILD_METHOD="BuildScript.BuildMacProject"
     BUILD_TARGET_NAME="Mac"
