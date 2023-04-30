@@ -76,7 +76,7 @@ namespace Lunarsoft
 
             animator.SetTrigger(animationTrigger);
 
-            if (currentHealth <= 0)
+            if (isDead == false && currentHealth <= 0)
             {
                 Die();
             }
@@ -87,6 +87,7 @@ namespace Lunarsoft
             Debug.Log("You Dead af my guy");
             ScoreManager.instance.AddDeath();
             ScoreManager.instance.SpawnAtCurrentCheckPoint();
+            isDead = true;
             Destroy(gameObject);
         }
     }

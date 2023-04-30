@@ -1822,6 +1822,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   magicBoltPrefab: {fileID: 0}
   firePoint: {fileID: 0}
+  damage: 1
   fireRate: 1
   boltSpeed: 50
   destroyAfter: 5
@@ -1999,8 +2000,12 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   currentSpeed: 0
+  useKnockback: 1
+  isDead: 0
   direction: {x: 1, y: 0}
   currentState: {fileID: 0}
+  collectablePrefabs:
+  - {fileID: 7266491714413501230, guid: aef1ff5ea9fb14a86a71ab13bd98969d, type: 3}
 --- !u!1 &7246135255991288936
 GameObject:
   m_ObjectHideFlags: 0

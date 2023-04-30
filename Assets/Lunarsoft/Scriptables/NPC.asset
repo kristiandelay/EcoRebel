@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e6e5f30c8454d60aec3fafcbe5bb3e, type: 3}
+  m_Name: NPC
+  m_EditorClassIdentifier: 
+  level: 0
+  experience: 0
+  Health:
+    BaseValue: 100
+    Growth: 54
+  HealthRegeneration:
+    BaseValue: 5
+    Growth: 2
+  AttackDamage:
+    BaseValue: 10
+    Growth: 3
+  AttackSpeed:
+    BaseValue: 2
+    Growth: 1.2
+  Armor:
+    BaseValue: 100
+    Growth: 15
+  ArmorPenetration:
+    BaseValue: 12
+    Growth: 2
+  MagicResistance:
+    BaseValue: 2
+    Growth: 5
+  MagicAttack:
+    BaseValue: 10
+    Growth: 8
+  Mana:
+    BaseValue: 100
+    Growth: 18
+  ManaRegeneration:
+    BaseValue: 10
+    Growth: 4
+  Speed:
+    BaseValue: 50
+    Growth: 12
+  Range:
+    BaseValue: 20
+    Growth: 0
+  GoldGeneration:
+    BaseValue: 0
+    Growth: 0
+  CriticalStrikeChance:
+    BaseValue: 0
+    Growth: 0
+  CriticalStrikeDamage:
+    BaseValue: 0
+    Growth: 0
+  LifeSteal:
+    BaseValue: 0
+    Growth: 0

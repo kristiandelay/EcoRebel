@@ -8,7 +8,6 @@ using PolyNav;
 [RequireComponent(typeof(PolyNavAgent))]
 public class PatrolRandomWaypoints : MonoBehaviour
 {
-
     public List<Transform> WPoints = new List<Transform>();
     public float delayBetweenPoints = 0f;
 
@@ -45,7 +44,8 @@ public class PatrolRandomWaypoints : MonoBehaviour
     }
 
     IEnumerator WaitAndMove() {
-        yield return new WaitForSeconds(delayBetweenPoints);
+        float randomDelay = Random.Range(0f, delayBetweenPoints);
+        yield return new WaitForSeconds(randomDelay);
         agent.SetDestination(WPoints[Random.Range(0, WPoints.Count)].position);
     }
 

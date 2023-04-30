@@ -1901,7 +1901,7 @@ MonoBehaviour:
   firePoint: {fileID: 682170386}
   damage: 30
   fireRate: 10
-  boltSpeed: 50
+  boltSpeed: 100
   destroyAfter: 8
   magicspawnVFX:
   - {fileID: 1024167407391004, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}

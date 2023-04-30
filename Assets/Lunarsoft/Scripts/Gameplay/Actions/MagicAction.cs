@@ -44,13 +44,33 @@ namespace Lunarsoft
         {
             canCast = false;
 
+            // Trigger the "CastMagic" animation
             controller.animator.SetTrigger("CastMagic");
-            yield return new WaitForSeconds(0.5f); // Adjust this value to match the timing of the animation
 
+            // Get the AnimatorStateInfo for the layer where the "CastMagic" animation is playing
+            // (assuming it is in the base layer, which has an index of 0)
+            AnimatorStateInfo stateInfo = controller.animator.GetCurrentAnimatorStateInfo(0);
+
+            // Find the length of the "CastMagic" animation
+            float animationLength = 0f;
+            foreach (AnimationClip clip in controller.animator.runtimeAnimatorController.animationClips)
+            {
+                if (clip.name == "CastMagic") // Replace "CastMagic" with the actual name of the animation clip
+                {
+                    animationLength = clip.length;
+                    break;
+                }
+            }
+
+            // Wait for the duration of the animation
+            yield return new WaitForSeconds(animationLength);
+
+            // Continue with the rest of the coroutine
             yield return new WaitForSeconds(1f / fireRate);
 
             canCast = true;
         }
+
 
         private void CastMagicBolt()
         {
