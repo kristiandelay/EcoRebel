@@ -21,6 +21,39 @@ namespace Lunarsoft
 
         public GameObject magicShovel;
 
+        public PauseMenu pauseMenu;
+
+        protected override void Start()
+        {
+            base.Start();
+
+            GameObject pauseMenuObject = GameObject.Find("GameUICanvas");
+
+            // Check if the GameObject was found
+            if (pauseMenuObject != null)
+            {
+                // Get the PauseMenu component attached to the found GameObject
+                pauseMenu = pauseMenuObject.GetComponent<PauseMenu>();
+
+                // Check if the PauseMenu component was found
+                if (pauseMenu != null)
+                {
+                    // Perform actions with the PauseMenu component
+                    Debug.Log("PauseMenu component found!");
+                }
+                else
+                {
+                    // Handle the case where the PauseMenu component was not found
+                    Debug.Log("PauseMenu component not found!");
+                }
+            }
+            else
+            {
+                // Handle the case where the GameObject was not found
+                Debug.Log("PauseMenuObject not found!");
+            }
+
+        }
         protected override void Awake()
         {
             // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
@@ -86,7 +119,7 @@ namespace Lunarsoft
         {
             Debug.Log("You Dead af my guy");
             ScoreManager.instance.AddDeath();
-            ScoreManager.instance.SpawnAtCurrentCheckPoint();
+            pauseMenu.ShowDefeatMenu();
             isDead = true;
             Destroy(gameObject);
         }

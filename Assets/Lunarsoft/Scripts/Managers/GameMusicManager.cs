@@ -10,7 +10,20 @@ namespace Lunarsoft
         [SerializeField] private AudioClip[] songs;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private float fadeDuration = 1.0f;
-        [SerializeField] private float volume = 0.5f;
+        [SerializeField] private float _volume = 0.5f;
+
+        public float Volume
+        {
+            get => _volume;
+            set
+            {
+                _volume = Mathf.Clamp01(value); // Clamp the value between 0 and 1
+                if (audioSource != null)
+                {
+                    audioSource.volume = _volume;
+                }
+            }
+        }
 
         private int currentSongIndex = -1;
         private static GameMusicManager instance;
@@ -69,11 +82,11 @@ namespace Lunarsoft
             float elapsedTime = 0f;
             while (elapsedTime < duration)
             {
-                audioSource.volume = Mathf.Lerp(0f, volume, elapsedTime / duration);
+                audioSource.volume = Mathf.Lerp(0f, Volume, elapsedTime / duration);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
-            audioSource.volume = volume;
+            audioSource.volume = Volume;
         }
 
         private IEnumerator FadeOut(float duration)

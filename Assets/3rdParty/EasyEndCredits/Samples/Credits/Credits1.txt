@@ -1,0 +1,31 @@
+\{text "Group"}Producer
+\{text "Name"}Kristian Delay
+
+\{text "Group"}Director
+\{text "Name"}Trello
+
+\{text "Group"}Programmers
+\{text "Name"}Kristian Delay|ChatGPT|Unity Assetstore
+
+\{text "Group"}Game Designers
+\{text "Name"}Kristian Delay|ChatGPT
+
+\{text "Group"}Graphic Artists
+\{text "Name"}Kristian Delay|MidJourney|Unity Assetstore
+
+\{text "Group"}Music Design
+\{text "Name"}Kristian Delay|https://soundraw.io/
+
+\{text "Group"}SFX Design
+\{text "Name"}Kristian Delay|Unity Assetstore
+
+\{text "Group"}Special Thanks
+\{text "Name"}AI Overlords|https://pixabay.com/ |Unity Assetstore|https://soundraw.io/
+
+\{text "Group"}Cheat Code
+\{text "Name"}Up Up Down Down Left Right B A|MOO MOO MOO
+
+
+\{text "Group"}Developed by
+\{img "Logo"}
+

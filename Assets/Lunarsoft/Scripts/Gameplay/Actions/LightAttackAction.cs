@@ -13,7 +13,6 @@ namespace Lunarsoft
 
         [SerializeField] private AudioClip[] attackSounds;
         [SerializeField] private AudioClip[] attackImpactSounds;
-        [SerializeField] private AudioSource audioSource;
 
 
         public bool isAI = false;
@@ -28,11 +27,6 @@ namespace Lunarsoft
         protected override void Start()
         {
             base.Start();
-
-            if (audioSource == null)
-            {
-                audioSource = GetComponent<AudioSource>();
-            }
 
             if(GetComponent<AIController>() != null)
             {
@@ -140,21 +134,19 @@ namespace Lunarsoft
 
         private void PlayRandomAttackSound()
         {
-            if (audioSource != null && attackSounds.Length > 0)
+            if (attackSounds.Length > 0)
             {
                 int randomIndex = Random.Range(0, attackSounds.Length);
-                audioSource.clip = attackSounds[randomIndex];
-                audioSource.Play();
+                SoundManager.Instance.Play2D(attackSounds[randomIndex]);
             }
         }
 
         private void PlayRandomAttackImpactSound()
         {
-            if (audioSource != null && attackImpactSounds.Length > 0)
+            if (attackImpactSounds.Length > 0)
             {
                 int randomIndex = Random.Range(0, attackImpactSounds.Length);
-                audioSource.clip = attackImpactSounds[randomIndex];
-                audioSource.Play();
+                SoundManager.Instance.Play2D(attackImpactSounds[randomIndex]);
             }
         }
 

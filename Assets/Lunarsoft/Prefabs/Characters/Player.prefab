@@ -2052,6 +2052,7 @@ MonoBehaviour:
   virtualCamera: {fileID: 0}
   cam: {fileID: 0}
   magicShovel: {fileID: 8859984124151459840}
+  pauseMenu: {fileID: 0}
 --- !u!114 &8859984122673386174
 MonoBehaviour:
   m_ObjectHideFlags: 0

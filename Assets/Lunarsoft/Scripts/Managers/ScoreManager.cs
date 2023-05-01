@@ -73,18 +73,30 @@ namespace Lunarsoft
             StartCoroutine(SaveDataCoroutine());
 
             SpawnAtCurrentCheckPoint();
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            Debug.Log("Scene " + scene.name + " has been loaded.");
+            SpawnAtCurrentCheckPoint();
+        }
+
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         private void Update()
         {
-            if(playerController == null)
-            {
-                SpawnAtCurrentCheckPoint();
-            }
+            
         }
 
         public void SpawnAtCurrentCheckPoint()
         {
+            Time.timeScale = 1f;
+
             CheckPoint[] checkPoints = FindObjectsOfType<CheckPoint>();
             CheckPoint lastcheckedCheckPoint = null ;
             foreach (CheckPoint checkPoint in checkPoints)
@@ -135,6 +147,10 @@ namespace Lunarsoft
             SaveData();
         }
 
+        public void Respawn()
+        {
+            SpawnAtCurrentCheckPoint();
+        }
 
         public void PickedUpMagicShovel()
         {
@@ -145,8 +161,6 @@ namespace Lunarsoft
 
             SaveData();
         }
-
-
 
         public void AddKill()
         {

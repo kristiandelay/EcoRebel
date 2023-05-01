@@ -68,20 +68,33 @@ curl -X POST -H "Content-Type: application/json" \
   -d "{\"content\":\"Starting Unity build for $BUILD_TARGET_NAME. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
   "$DISCORD_WEBHOOK_URL"
 
+# Get the current timestamp (start time)
+START_TIME=$(date +%s)
+
 # Run the Unity build command with the chosen build method
 "$UNITY_PATH" -batchmode -nographics -silent-crashes -quit \
   -projectPath "$PROJECT_PATH" \
   -executeMethod "$BUILD_METHOD"
 
+# Get the exit code of the Unity build command
+UNITY_EXIT_CODE=$?
+
+# Get the current timestamp (end time)
+END_TIME=$(date +%s)
+
+# Calculate the time difference (build duration)
+BUILD_DURATION=$((END_TIME - START_TIME))
+
+
 # Check the exit code to see if the build was successful
-if [ $? -eq 0 ]; then
-  # Send a success message to Discord, including the last Git commit information
+if [ $UNITY_EXIT_CODE -eq 0 ]; then
+  # Send a success message to Discord, including the last Git commit information and build duration
   curl -X POST -H "Content-Type: application/json" \
-    -d "{\"content\":\"Unity build for $BUILD_TARGET_NAME completed successfully. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
+    -d "{\"content\":\"Unity build for $BUILD_TARGET_NAME completed successfully in $BUILD_DURATION seconds. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
     "$DISCORD_WEBHOOK_URL"
 else
-  # Send a failure message to Discord, including the last Git commit information
+  # Send a failure message to Discord, including the last Git commit information and build duration
   curl -X POST -H "Content-Type: application/json" \
-    -d "{\"content\":\"Unity build for $BUILD_TARGET_NAME failed. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
+    -d "{\"content\":\"Unity build for $BUILD_TARGET_NAME failed after $BUILD_DURATION seconds. Last Git commit: [$LAST_COMMIT_HASH]($GITHUB_COMMIT_URL) - $LAST_COMMIT_MESSAGE (Author: $LAST_COMMIT_AUTHOR)\"}" \
     "$DISCORD_WEBHOOK_URL"
 fi

@@ -15,7 +15,7 @@ public class BuildScript
         BuildTarget buildTarget = BuildTarget.StandaloneOSX;
 
         // Define the build options (e.g., Development build)
-        BuildOptions buildOptions = BuildOptions.Development;
+        BuildOptions buildOptions = BuildOptions.AutoRunPlayer;
 
         // Get the scenes to build from the current build settings
         string[] scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes);
@@ -36,7 +36,7 @@ public class BuildScript
         BuildTarget buildTarget = BuildTarget.StandaloneWindows64;
 
         // Define the build options (e.g., Development build)
-        BuildOptions buildOptions = BuildOptions.Development;
+        BuildOptions buildOptions = BuildOptions.AutoRunPlayer;
 
         // Get the scenes to build from the current build settings
         string[] scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes);

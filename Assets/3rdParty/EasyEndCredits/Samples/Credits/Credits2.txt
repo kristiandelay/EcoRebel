@@ -1,0 +1,57 @@
+\{event "image1"}
+
+\{text "Group"}Producer
+\{text "Name"}George Joseph
+
+
+\{text "Group"}Director
+\{text "Name"}Andre O. Davidson
+
+
+\{text "Group"}Programmers
+\{text "Name"}Felix Cardinal
+Tomy L. Parenteau
+Scott S. Bossé
+Le Sami
+
+\{event "image2"}
+\{text "Group"}Game Designers
+\{text "Name"}Lucile Nicolas
+Brian S. Gupta
+Zafar Z. Coombes
+Stephane C. Mejri
+Narcisse F. Gross
+Yukiko Gima
+
+
+\{text "Group"}Graphic Artists
+\{text "Name"}Josée Landry
+Meri Chan
+Marika R. Drolet
+Flora K. Diallo
+
+\{event "image3"}
+\{text "Group"}Special Thanks
+\{text "Name"}Leonard Y. Terry
+Delbert Villamor
+Xiao Bateman
+Chloé J. Veilleux
+Mimi M. Dupont
+Rachelle D. Deschamps
+
+
+
+\{event "image4"}
+\{text "Group"}Developed by
+\{img "Logo"}
+
+
+
+
+
+
+
+
+
+
+\{event "finish"}
