@@ -84,6 +84,11 @@ namespace Lunarsoft
 
                 // Set the pause state to true
                 isPaused = true;
+
+                if (!Cursor.visible)
+                {
+                    Cursor.visible = true;
+                }
             }
             else
             {
@@ -97,6 +102,11 @@ namespace Lunarsoft
                 isPaused = false;
 
                 CloseSettings();
+
+                if (Cursor.visible)
+                {
+                    Cursor.visible = false;
+                }
             }
         }
 
@@ -126,6 +136,11 @@ namespace Lunarsoft
 
         public void ShowDefeatMenu()
         {
+            if (!Cursor.visible)
+            {
+                Cursor.visible = true;
+            }
+
             defeatMenuPrefab.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;
@@ -135,6 +150,10 @@ namespace Lunarsoft
         public void HideDefeatMenu()
         {
             defeatMenuPrefab.SetActive(false);
+            if (Cursor.visible)
+            {
+                Cursor.visible = false;
+            }
         }
 
         public void GiveUp()

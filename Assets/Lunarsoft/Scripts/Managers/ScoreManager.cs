@@ -92,8 +92,8 @@ namespace Lunarsoft
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Destroy(playerController.gameObject);
-                ClearData();
+                //Destroy(playerController.gameObject);
+                //ClearData();
 
             }
         }
