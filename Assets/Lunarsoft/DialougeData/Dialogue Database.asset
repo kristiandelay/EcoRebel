@@ -831,7 +831,7 @@ MonoBehaviour:
         typeString: 
       - title: Dialogue Text
         value: 'Hello traveler. Welcome to a land of wonder and mystery, where magic
-          and nature entertwine in an eternal dance.
+          and nature intertwine in an eternal dance.
 
 '
         type: 0
@@ -1343,7 +1343,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 20
+        x: 190
         y: 54
         width: 160
         height: 30
@@ -1399,8 +1399,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 26
-        y: 104
+        x: 190
+        y: 108
         width: 160
         height: 30
     - id: 2
@@ -1455,8 +1455,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 34
-        y: 165
+        x: 190
+        y: 162
         width: 160
         height: 30
     - id: 3
@@ -1474,7 +1474,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 1
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -1501,12 +1501,6 @@ MonoBehaviour:
       - originConversationID: 4
         originDialogueID: 3
         destinationConversationID: 4
-        destinationDialogueID: 4
-        isConnector: 0
-        priority: 2
-      - originConversationID: 4
-        originDialogueID: 3
-        destinationConversationID: 4
         destinationDialogueID: 5
         isConnector: 0
         priority: 2
@@ -1517,57 +1511,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 21
-        y: 230
-        width: 160
-        height: 30
-    - id: 4
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: 
-      - title: Description
-        value: 
-        type: 0
-        typeString: 
-      - title: Actor
-        value: 1
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 2
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: 
-      - title: Dialogue Text
-        value: 
-        type: 0
-        typeString: 
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: 
-      conversationID: 4
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks: []
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 21
-        y: 456
+        x: 180
+        y: 208
         width: 160
         height: 30
     - id: 5
@@ -1623,8 +1568,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 21
-        y: 280
+        x: 190
+        y: 270
         width: 160
         height: 30
     - id: 6
@@ -1680,8 +1625,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 21
-        y: 330
+        x: 190
+        y: 324
         width: 160
         height: 30
     - id: 7
@@ -1695,7 +1640,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Actor
-        value: 1
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
@@ -1732,8 +1677,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 21
-        y: 380
+        x: 190
+        y: 378
         width: 160
         height: 30
     entryGroups: []

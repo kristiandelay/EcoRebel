@@ -90,7 +90,12 @@ namespace Lunarsoft
 
         private void Update()
         {
-            
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Destroy(playerController.gameObject);
+                ClearData();
+
+            }
         }
 
         public void SpawnAtCurrentCheckPoint()

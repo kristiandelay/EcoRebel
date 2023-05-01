@@ -10,7 +10,7 @@ namespace Lunarsoft
         [SerializeField] private AudioClip[] songs;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private float fadeDuration = 1.0f;
-        [SerializeField] private float _volume = 0.5f;
+        [SerializeField] private float _volume = 0.3f;
 
         public float Volume
         {
